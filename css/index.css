@@ -1,0 +1,48 @@
+:root {
+  --app-header-h: 4rem;
+  --ols-map-box-h: 500px;
+  --ols-map-box-w: 700px;
+  --btn-primary-bg: #cd6155;
+  --btn-primary-text: #fff;
+  --base-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
+  --btn-height: 40px;
+  --btn-width: 100px;
+}
+
+.app-header {
+  height: var(--app-header-h);
+  width: 100%;
+}
+
+.app-body {
+  width: 100%;
+  height: calc(100vh - var(--app-header-h));
+}
+
+/* UTILITIES */
+.w-fit {
+  width: fit-content;
+}
+
+/* BUTTONS */
+.btn {
+  height: var(--btn-height);
+  width: var(--btn-width);
+  box-shadow: var(--base-shadow);
+  border-color: transparent !important;
+}
+
+.btn-primary {
+  background-color: var(--btn-primary-text) !important;
+  color: var(--btn-primary-bg) !important;
+}
+.btn-primary:hover {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+.btn-active,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-text) !important;
+}

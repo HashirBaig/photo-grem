@@ -3,11 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photo Grem</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="./plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.js"></script>
+
+    <title>Photogrem</title>
   </head>
   <body>
-    <div>Hello world</div>
-    <div>Hello world</div>
-    <div>NEw world</div>
+    <div class="app min-vh-100 w-100">
+      <header
+        class="app-header d-flex align-items-center justify-content-between px-3"
+      >
+        <div>
+          <img src="./assets/svgs/app_logo.svg" alt="Photogrem" />
+        </div>
+        <nav class="nav">
+          <ul
+            class="navbar list-unstyled m-0 p-0 d-flex align-items-center gap-3"
+          >
+            <li class="nav-item">
+              <button class="btn btn-primary btn-active">About</button>
+            </li>
+            <li>
+              <button class="btn btn-primary">Team</button>
+            </li>
+          </ul>
+        </nav>
+        <div class="w-fit">
+          <button class="btn btn-success">
+            <i class="fa-solid fa-play"></i>
+            Demo
+          </button>
+        </div>
+      </header>
+      <div class="app-body"></div>
+    </div>
+    <script src="./js/index.js"></script>
   </body>
 </html>
