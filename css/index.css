@@ -19,7 +19,6 @@
 .app-body {
   width: 100%;
   height: calc(100vh - var(--app-header-h));
-  padding: 100px 50px;
 }
 
 /* UTILITIES */
@@ -35,8 +34,8 @@
 .min-w-994px {
   min-width: 994px !important;
 }
-.text-primary {
-  color: var(--text-primary) !important;
+.bg-color-primary {
+  background-color: var(--primary-color);
 }
 
 /* LIST */
@@ -56,6 +55,7 @@ ul li::before {
 
 /* CARDS */
 .card {
+  position: relative;
   height: fit-content;
   min-width: fit-content;
   max-width: 994px;
