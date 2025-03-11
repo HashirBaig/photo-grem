@@ -32,8 +32,26 @@
 .min-h-180px {
   min-height: 180px;
 }
+.min-w-994px {
+  min-width: 994px !important;
+}
 .text-primary {
   color: var(--text-primary) !important;
+}
+
+/* LIST */
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "•"; /* Custom bullet */
+  color: var(--primary-color); /* Change bullet color */
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
 
 /* CARDS */
