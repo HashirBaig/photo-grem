@@ -26,37 +26,102 @@
 
     <script src="./plugins/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <title>Photogrem</title>
   </head>
   <body>
     <div class="app min-vh-100 w-100">
-      <header
-        class="app-header d-flex align-items-center justify-content-between px-3"
-      >
-        <div>
-          <img src="./assets/svgs/app_logo.svg" alt="Photogrem" />
+      <div
+        name="load-html-headermenu"
+        data-source="./html-components/headermenu.html"
+      ></div>
+      <script>
+        $('[name="load-html-headermenu"]').each(function () {
+          $(this).load(this.dataset.source);
+        });
+      </script>
+      <div class="app-body">
+        <div class="container-fluid">
+          <section class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+              <div class="card position-relative min-h-180px">
+                <!-- start:: card graphics ::start -->
+                <img
+                  src="./assets/svgs/bubbles.svg"
+                  alt="graphic"
+                  class="card-bb-graphic"
+                />
+                <!-- start:: card graphics ::start -->
+                <h4 class="text-color-primary text-center my-4 fw-bolder">
+                  About Our Web App
+                </h4>
+                <p>
+                  Welcome to our cutting-edge web application, designed to
+                  revolutionize how photogrammetric products are analyzed and
+                  visualized. Our platform utilizes the powerful Segment
+                  Anything Model (SAM) to automatically segment buildings from
+                  aerial and satellite imagery, enabling users to gain precise
+                  insights into structural and urban changes.
+                </p>
+                <!-- end:: card graphics ::end -->
+                <img
+                  src="./assets/svgs/circle.svg"
+                  alt="graphic"
+                  class="card-circle-graphic"
+                />
+                <!-- end:: card graphics ::end -->
+              </div>
+            </div>
+          </section>
+          <section class="row mt-4">
+            <div class="col-md-12">
+              <h4 class="text-color-primary text-center my-4 fw-bolder">
+                What We Offer
+              </h4>
+              <div class="row">
+                <div class="col md-4">
+                  <div class="card min-h-180px">
+                    <h5 class="text-color-primary text-center fw-semibold">
+                      Advanced Building Segmentation
+                    </h5>
+                    <p>
+                      Leveraging SAM’s AI-driven capabilities, our platform
+                      delivers highly accurate building segmentation results,
+                      making it an essential tool for professionals in urban
+                      planning, real estate, and disaster assessment.
+                    </p>
+                  </div>
+                </div>
+                <div class="col md-4">
+                  <div class="card min-h-180px">
+                    <h5 class="text-color-primary text-center fw-semibold">
+                      Before & After Analysis
+                    </h5>
+                    <p>
+                      With our intuitive slider interface, users can seamlessly
+                      compare pre- and post-segmentation imagery, providing a
+                      clear and interactive visualization of changes over time.
+                    </p>
+                  </div>
+                </div>
+                <div class="col md-4">
+                  <div class="card min-h-180px">
+                    <h5 class="text-color-primary text-center fw-semibold">
+                      Web-Based Accessibility
+                    </h5>
+                    <p>
+                      No software installation required. Our web app allows
+                      users to access and analyze segmented data from anywhere,
+                      ensuring convenience and efficiency.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-        <nav class="nav">
-          <ul
-            class="navbar list-unstyled m-0 p-0 d-flex align-items-center gap-3"
-          >
-            <li class="nav-item">
-              <button class="btn btn-primary btn-active">About</button>
-            </li>
-            <li>
-              <button class="btn btn-primary">Team</button>
-            </li>
-          </ul>
-        </nav>
-        <div class="w-fit">
-          <button class="btn btn-success">
-            <i class="fa-solid fa-play"></i>
-            Demo
-          </button>
-        </div>
-      </header>
-      <div class="app-body"></div>
+      </div>
     </div>
     <script src="./js/index.js"></script>
   </body>

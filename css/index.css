@@ -2,7 +2,9 @@
   --app-header-h: 4rem;
   --ols-map-box-h: 500px;
   --ols-map-box-w: 700px;
-  --btn-primary-bg: #cd6155;
+  --primary-color: #cd6155;
+  --text-primary: var(--primary-color);
+  --btn-primary-bg: var(--primary-color);
   --btn-primary-text: #fff;
   --base-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
   --btn-height: 40px;
@@ -17,17 +19,61 @@
 .app-body {
   width: 100%;
   height: calc(100vh - var(--app-header-h));
+  padding: 100px 50px;
 }
 
 /* UTILITIES */
 .w-fit {
   width: fit-content;
 }
+.max-w-320px {
+  max-width: 320px !important;
+}
+.min-h-180px {
+  min-height: 180px;
+}
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+/* CARDS */
+.card {
+  height: fit-content;
+  min-width: fit-content;
+  max-width: 994px;
+  box-shadow: var(--base-shadow) !important;
+  padding: 10px 20px;
+  border: none !important;
+}
+.card-header-text {
+  color: var(--text-primary);
+}
+
+.card-bb-graphic {
+  position: absolute;
+  top: calc(0% - 19px);
+  left: calc(0% - 19px);
+  height: 38px;
+  width: 38px;
+}
+.card-circle-graphic {
+  position: absolute;
+  top: calc(100% - 13px);
+  left: calc(100% - 13px);
+  height: 25px;
+  width: 25px;
+}
+
+/* TEXT */
+.text-color-primary {
+  color: var(--text-primary) !important;
+}
 
 /* BUTTONS */
 .btn {
   height: var(--btn-height);
-  width: var(--btn-width);
+  min-width: var(--btn-width);
+  max-width: fit-content;
   box-shadow: var(--base-shadow);
   border-color: transparent !important;
 }
