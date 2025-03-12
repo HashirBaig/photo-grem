@@ -33,16 +33,27 @@
   <body>
     <div class="app min-vh-100 w-100">
       <!-- Header -->
-      <div
-        name="load-html-headermenu"
-        data-source="../html-components/headermenu.html"
-      ></div>
-      <script>
-        $('[name="load-html-headermenu"]').each(function () {
-          $(this).load(this.dataset.source);
-        });
-      </script>
+      <header
+        class="app-header d-flex align-items-center justify-content-between px-3"
+      >
+        <div>
+          <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
+        </div>
+
+        <a class="btn btn-secondary" href="../index.html" id="back-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back
+        </a>
+      </header>
+
+      <!-- app body -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
     </div>
     <script src="../js/controllers/product.js"></script>
+    <script src="../js/helper.js"></script>
   </body>
 </html>
