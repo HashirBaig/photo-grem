@@ -1,11 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <title>Teams | Photogrem</title>
+  </head>
+  <body>
+    <div class="app min-vh-100 w-100">
+      <!-- Header -->
+      <header
+        class="app-header d-flex align-items-center justify-content-between px-3"
+      >
+        <div>
+          <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
+        </div>
+
+        <a class="btn btn-secondary" href="../index.html" id="back-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back
+        </a>
+      </header>
+
+      <!-- Team Members Section -->
+      <div class="container my-5">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm p-3 d-flex flex-row align-items-center">
+                <i class="fa-solid fa-user"></i>
+              <img src="../assets/images/member1.jpg" class="rounded-circle me-3" width="60" height="60" alt="Member 1">
+              <div>
+                <h5 class="mb-0">Team Member 1</h5>
+                <p class="text-muted">Student - M GEO Program</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm p-3 d-flex flex-row align-items-center">
+                <i class="fa-solid fa-user"></i>
+              <img src="../assets/images/member2.jpg" class="rounded-circle me-3" width="60" height="60" alt="Member 2">
+              <div>
+                <h5 class="mb-0">Team Member 2</h5>
+                <p class="text-muted">Student - M GEO Program</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm p-3 d-flex flex-row align-items-center">
+                <i class="fa-solid fa-user"></i>
+              <img src="../assets/images/member3.jpg" class="rounded-circle me-3" width="60" height="60" alt="Member 3">
+              <div>
+                <h5 class="mb-0">Team Member 3</h5>
+                <p class="text-muted">Student - M GEO Program</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm p-3 d-flex flex-row align-items-center">
+                <i class="fa-solid fa-user"></i>
+              <img src="../assets/images/member4.jpg" class="rounded-circle me-3" width="60" height="60" alt="Member 4">
+              <div>
+                <h5 class="mb-0">Team Member 4</h5>
+                <p class="text-muted">Student - M GEO Program</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
