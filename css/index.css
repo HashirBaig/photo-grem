@@ -9,6 +9,8 @@
   --base-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
   --btn-height: 40px;
   --btn-width: 100px;
+  --btn-primary-active-bg: #cd6155; 
+  --btn-primary-active-text: #ffffff;
 }
 
 .app-header {
@@ -110,3 +112,8 @@ ul li::before {
   background-color: var(--btn-primary-bg) !important;
   color: var(--btn-primary-text) !important;
 }
+.btn-primary.active {
+  background-color: var(--btn-primary-active-bg) !important;
+  color: var(--btn-primary-active-text) !important;
+}
+
