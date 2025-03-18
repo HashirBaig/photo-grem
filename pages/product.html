@@ -33,11 +33,10 @@
     <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="https://unpkg.com/georaster"></script>
+    <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
 
     <title>Product | Photogrem</title>
   </head>
@@ -61,10 +60,18 @@
       <!-- app body -->
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12"></div>
+          <div
+            class="col-md-12 d-flex align-items-center justify-content-center"
+          >
+            <div
+              id="map"
+              style="height: calc(100vh - 75px); width: 100vw"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
+
     <script src="../js/controllers/product.js"></script>
     <script src="../js/helper.js"></script>
   </body>
