@@ -10,11 +10,8 @@ const initMap = () => {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  // var url_to_geotiff_file = `https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/ImagebasedDSM.tif?alt=media&token=9eda9d88-4578-48a1-ba78-1effe9e51aa6`;
   var url_to_geotiff_file =
     "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121";
-  // var url_to_geotiff_file =
-  //   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/1106.tif?alt=media&token=5b19ec74-26c0-4b1d-a240-2bde75019829";
 
   fetch(url_to_geotiff_file)
     .then((res) => res.arrayBuffer())
