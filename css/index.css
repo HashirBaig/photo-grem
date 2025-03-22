@@ -7,9 +7,10 @@
   --btn-primary-bg: var(--primary-color);
   --btn-primary-text: #fff;
   --base-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
+  --inter-shadow: rgba(0, 0, 0, 0.25) 2px 2px 5px;
   --btn-height: 40px;
   --btn-width: 100px;
-  --btn-primary-active-bg: #cd6155; 
+  --btn-primary-active-bg: #cd6155;
   --btn-primary-active-text: #ffffff;
 }
 
@@ -23,7 +24,16 @@
   height: calc(100vh - var(--app-header-h));
 }
 
-/* UTILITIES */
+/* START:: MAP ::START*/
+#map {
+  width: 100vw;
+  height: calc(100vh - 5rem);
+  border-radius: 12px;
+  margin: 0.5rem 0 0 0;
+}
+/* END:: MAP ::END*/
+
+/* START:: UTILITIES ::START*/
 .w-fit {
   width: fit-content;
 }
@@ -49,6 +59,21 @@
 .bg-color-primary {
   background-color: var(--primary-color);
 }
+/* END:: UTILITIES ::END*/
+
+/* START:: TEAM MEMBER PICTURE ::START */
+.picture-container {
+  width: 7rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 999px;
+  margin: 0 0.5rem;
+}
+.picture-container > .member-pic {
+  width: 6rem;
+  height: auto;
+}
+/* END:: TEAM MEMBER PICTURE ::END */
 
 /* LIST */
 ul {
@@ -74,7 +99,14 @@ ul li::before {
   box-shadow: var(--base-shadow) !important;
   padding: 10px 20px;
   border: none !important;
+  transition: 0.2s all ease;
 }
+.card:hover {
+  box-shadow: var(--inter-shadow) !important;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
 .card-header-text {
   color: var(--text-primary);
 }
@@ -109,8 +141,8 @@ ul li::before {
 /* BUTTONS */
 .btn {
   height: var(--btn-height);
-  min-width: var(--btn-width);
-  max-width: fit-content;
+  min-width: fit-content;
+  max-width: var(--btn-width);
   box-shadow: var(--base-shadow);
   border-color: transparent !important;
 }
@@ -133,4 +165,3 @@ ul li::before {
   background-color: var(--btn-primary-active-bg) !important;
   color: var(--btn-primary-active-text) !important;
 }
-
