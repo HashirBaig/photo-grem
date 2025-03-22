@@ -38,6 +38,9 @@
     <script src="https://unpkg.com/georaster"></script>
     <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
 
+    <script src="https://unpkg.com/rainbowvis.js"></script>
+    <script type="module" src="../js/firbase/register.js" defer></script>
+
     <title>Product | Photogrem</title>
   </head>
   <body>
@@ -54,7 +57,6 @@
           <i class="fa-solid fa-arrow-left"></i>
           Back
         </a>
-        </div>
       </header>
 
       <!-- app body -->
@@ -63,10 +65,7 @@
           <div
             class="col-md-12 d-flex align-items-center justify-content-center"
           >
-            <div
-              id="map"
-              style="height: calc(100vh - 75px); width: 100vw"
-            ></div>
+            <div id="map" style="height: 500px; width: 100vw"></div>
           </div>
         </div>
       </div>
