@@ -80,7 +80,7 @@ const renderControlPanel = (map) => {
 
       const label = document.createElement("label");
       label.htmlFor = "toggleDSMRaster";
-      label.innerText = "Show DSM";
+      label.innerText = "Digital Surface Model";
       label.className = "form-check-label";
 
       // Append elements

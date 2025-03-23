@@ -60,7 +60,7 @@
   background-color: var(--primary-color);
 }
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 .fs-custom {
   font-size: 0.9rem !important;
