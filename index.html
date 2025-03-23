@@ -40,7 +40,7 @@
           <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
         </div>
 
-        <div class="d-flex gap-3">
+        <div class="d-none d-md-flex gap-md-2">
           <a class="btn btn-primary active fw-bold" href="../index.html">
             <i class="fa-solid fa-house"></i>
             Home
@@ -65,14 +65,12 @@
           </a>
         </div>
 
-        <div class="w-fit">
-          <a
-            class="btn btn-success"
-            href="../pages/product.html"
-            id="nav-to-product-btn"
-          >
-            <i class="fa-solid fa-play"></i>
-            Demo
+        <div>
+          <a class="btn" href="../pages/product.html" id="nav-to-product-btn">
+            <i class="fa-solid fa-play text-success"></i>
+            <label for="nav-to-product-btn" class="text-success fw-semibold">
+              Demo
+            </label>
           </a>
         </div>
       </header>
@@ -114,8 +112,10 @@
               What We Offer
             </h4>
             <div class="row">
-              <div class="col md-4">
-                <div class="card min-h-180px">
+              <div
+                class="col-md-12 d-flex justify-content-center gap-4 flex-wrap"
+              >
+                <div class="card team">
                   <h5 class="text-color-primary text-center fw-semibold">
                     DSM and DTM creation
                   </h5>
@@ -126,9 +126,8 @@
                     plannin and disaster assessment.
                   </p>
                 </div>
-              </div>
-              <div class="col md-4">
-                <div class="card min-h-180px">
+
+                <div class="card team">
                   <h5 class="text-color-primary text-center fw-semibold">
                     Orthophoto creation
                   </h5>
@@ -140,9 +139,8 @@
                     infrastructure planning.
                   </p>
                 </div>
-              </div>
-              <div class="col md-4">
-                <div class="card min-h-180px">
+
+                <div class="card team">
                   <h5 class="text-color-primary text-center fw-semibold">
                     Web-Based Accessibility
                   </h5>

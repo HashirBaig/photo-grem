@@ -23,7 +23,6 @@ const initMap = () => {
   renderLegend(map);
 };
 
-// Function to create a legend control
 const renderLegend = (map) => {
   const legend = L.control({ position: "bottomright" });
 
@@ -135,6 +134,25 @@ const renderGeoRaster = (map) => {
         }).addTo(map);
 
         map.fitBounds(geoRasterLayer.getBounds());
+
+        // Add event listener to log pixel values on hover
+        // geoRasterLayer.on("mousemove", function (event) {
+        //   const latlng = event.latlng;
+        //   const { x, y } = event;
+
+        //   // Convert lat/lng to raster pixel values
+        //   const pixelValues = georaster.getValues(latlng.lng, latlng.lat);
+
+        //   if (pixelValues) {
+        //     console.log(
+        //       `Pixel Value at (${latlng.lat}, ${latlng.lng}):`,
+        //       pixelValues
+        //     );
+
+        //     // Change cursor to crosshair
+        //     map.getContainer().style.cursor = "crosshair";
+        //   }
+        // });
       });
     });
 };

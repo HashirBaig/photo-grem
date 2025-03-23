@@ -113,6 +113,12 @@ ul li::before {
   cursor: pointer;
 }
 
+.card.team {
+  width: 430px;
+  min-height: 190px;
+  max-height: fit-content;
+}
+
 .card-header-text {
   color: var(--text-primary);
 }
