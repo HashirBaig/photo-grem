@@ -75,6 +75,10 @@
   border-radius: 999px;
   margin: 0 0.5rem;
 }
+.picture-container.hashir {
+  width: 5rem;
+  height: 5rem;
+}
 .picture-container > .member-pic {
   width: 6rem;
   height: auto;
