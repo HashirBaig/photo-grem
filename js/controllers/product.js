@@ -13,15 +13,42 @@ const initMap = () => {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  // Add Geo Raster
+  // Render Geo Raster
   renderGeoRaster(map);
 
-  // Add Control Panel
+  // Control Panel
   renderControlPanel(map);
+
+  // Map Lengend
+  renderLegend(map);
+};
+
+// Function to create a legend control
+const renderLegend = (map) => {
+  const legend = L.control({ position: "bottomright" });
+
+  legend.onAdd = function () {
+    const div = L.DomUtil.create("div", "info legend");
+
+    div.innerHTML = `
+      <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
+        <strong>Elevation (m)</strong><br>
+        <div style="width: 150px; height: 15px; background: linear-gradient(to right, blue, cyan, green, yellow, red);"></div>
+        <div style="display: flex; justify-content: space-between;">
+          <span>Low</span>
+          <span>High</span>
+        </div>
+      </div>
+    `;
+
+    return div;
+  };
+
+  legend.addTo(map);
 };
 
 const renderControlPanel = (map) => {
-  let panelControl = L.Control.extend({
+  const panelControl = L.Control.extend({
     options: {
       position: "topright", // Change to 'topleft', 'bottomleft', or 'bottomright'
     },
