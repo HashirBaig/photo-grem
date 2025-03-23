@@ -59,6 +59,12 @@
 .bg-color-primary {
   background-color: var(--primary-color);
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.fs-custom {
+  font-size: 0.9rem !important;
+}
 /* END:: UTILITIES ::END*/
 
 /* START:: TEAM MEMBER PICTURE ::START */
