@@ -72,30 +72,59 @@ const renderControlPanel = (map) => {
       const checkboxContainer = document.createElement("div");
       checkboxContainer.className = "form-check fs-custom";
 
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.id = "toggleDSMRaster";
-      checkbox.className = "form-check-input cursor-pointer";
-      checkbox.checked = true;
+      const checkboxDSM = document.createElement("input");
+      checkboxDSM.type = "checkbox";
+      checkboxDSM.id = "toggleDSMRaster";
+      checkboxDSM.className = "form-check-input cursor-pointer";
+      checkboxDSM.checked = true;
 
-      const label = document.createElement("label");
-      label.htmlFor = "toggleDSMRaster";
-      label.innerText = "Digital Surface Model";
-      label.className = "form-check-label";
+      const labelDSM = document.createElement("label");
+      labelDSM.htmlFor = "toggleDSMRaster";
+      labelDSM.innerText = "Digital Surface Model";
+      labelDSM.className = "form-check-label";
+
+      // Checkbox and Label
+      const checkboxDTMContainer = document.createElement("div");
+      checkboxDTMContainer.className = "form-check fs-custom";
+
+      const checkboxDTM = document.createElement("input");
+      checkboxDTM.type = "checkbox";
+      checkboxDTM.id = "toggleDTMRaster";
+      checkboxDTM.className = "form-check-input cursor-pointer";
+      checkboxDTM.checked = false;
+
+      const labelDTM = document.createElement("label");
+      labelDTM.htmlFor = "toggleDTMRaster";
+      labelDTM.innerText = "Digital Terrain Model";
+      labelDTM.className = "form-check-label";
 
       // Append elements
-      checkboxContainer.appendChild(checkbox);
-      checkboxContainer.appendChild(label);
+      checkboxContainer.appendChild(checkboxDSM);
+      checkboxContainer.appendChild(labelDSM);
 
+      checkboxDTMContainer.appendChild(checkboxDTM);
+      checkboxDTMContainer.appendChild(labelDTM);
+
+      // Append to CP
       panelControlDiv.appendChild(headerDiv);
       panelControlDiv.appendChild(checkboxContainer);
+      panelControlDiv.appendChild(checkboxDTMContainer);
 
       // On change methods
-      checkbox.onchange = function () {
+      checkboxDSM.onchange = function () {
         if (this.checked) {
           geoRasterLayer.addTo(map);
         } else {
           map.removeLayer(geoRasterLayer);
+        }
+      };
+      checkboxDTM.onchange = function () {
+        if (this.checked) {
+          checkboxDSM.checked = false;
+          console.log("checked show dtm");
+        } else {
+          checkboxDSM.checked = true;
+          console.log("un-checked unshow dtm");
         }
       };
 
