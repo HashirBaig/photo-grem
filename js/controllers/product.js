@@ -190,6 +190,7 @@ const renderGeoRaster = (map, isDSM = true) => {
       });
     })
     .catch((error) => {
+      AppBlockUI.unblock();
       console.log("error: ", error);
 
       renderGeoRaster(map, isDSM);
