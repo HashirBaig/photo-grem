@@ -46,6 +46,14 @@ const renderLegend = (map) => {
   legend.addTo(map);
 };
 
+const getControlPanelHeader = () => {
+  const headerDiv = document.createElement("h5");
+  headerDiv.className = "text-center fw-bolder";
+  headerDiv.innerText = "Controls";
+
+  return headerDiv;
+};
+
 const renderControlPanel = (map) => {
   const panelControl = L.Control.extend({
     options: {
@@ -64,11 +72,9 @@ const renderControlPanel = (map) => {
       panelControlDiv.style.backgroundColor = "#fdedec";
 
       // Header
-      const headerDiv = document.createElement("h5");
-      headerDiv.className = "text-center fw-bolder";
-      headerDiv.innerText = "Controls";
+      const headerDiv = getControlPanelHeader();
 
-      // Checkbox and Label
+      // Checkbox and Label - DSM
       const checkboxContainer = document.createElement("div");
       checkboxContainer.className = "form-check fs-custom";
 
@@ -83,7 +89,7 @@ const renderControlPanel = (map) => {
       labelDSM.innerText = "Digital Surface Model";
       labelDSM.className = "form-check-label";
 
-      // Checkbox and Label
+      // Checkbox and Label - DTM
       const checkboxDTMContainer = document.createElement("div");
       checkboxDTMContainer.className = "form-check fs-custom";
 
@@ -112,19 +118,32 @@ const renderControlPanel = (map) => {
 
       // On change methods
       checkboxDSM.onchange = function () {
-        if (this.checked) {
-          geoRasterLayer.addTo(map);
-        } else {
+        if (map.hasLayer(geoRasterLayer)) {
           map.removeLayer(geoRasterLayer);
         }
+
+        if (this.checked) {
+          checkboxDTM.checked = false;
+
+          renderGeoRaster(map);
+        } else {
+          checkboxDTM.checked = true;
+
+          renderGeoRaster(map, false);
+        }
       };
+
       checkboxDTM.onchange = function () {
+        if (map.hasLayer(geoRasterLayer)) {
+          map.removeLayer(geoRasterLayer);
+        }
+
         if (this.checked) {
           checkboxDSM.checked = false;
-          console.log("checked show dtm");
+          renderGeoRaster(map, false);
         } else {
           checkboxDSM.checked = true;
-          console.log("un-checked unshow dtm");
+          renderGeoRaster(map);
         }
       };
 
@@ -137,13 +156,18 @@ const renderControlPanel = (map) => {
   map.addControl(new panelControl());
 };
 
-const renderGeoRaster = (map) => {
-  var url_to_geotiff_file =
-    "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121";
+const renderGeoRaster = (map, isDSM = true) => {
+  const url_to_geotiff_file = isDSM
+    ? "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121"
+    : "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_image_dtm.tif?alt=media&token=09a90b11-866b-40b3-8c05-e5fc1a2dd194";
+
+  AppBlockUI.block();
 
   fetch(url_to_geotiff_file)
     .then((res) => res.arrayBuffer())
     .then((arrayBuffer) => {
+      AppBlockUI.unblock();
+
       parseGeoraster(arrayBuffer).then((georaster) => {
         const numberOfItems = Math.round(georaster.maxs[0]);
 
@@ -163,25 +187,11 @@ const renderGeoRaster = (map) => {
         }).addTo(map);
 
         map.fitBounds(geoRasterLayer.getBounds());
-
-        // Add event listener to log pixel values on hover
-        // geoRasterLayer.on("mousemove", function (event) {
-        //   const latlng = event.latlng;
-        //   const { x, y } = event;
-
-        //   // Convert lat/lng to raster pixel values
-        //   const pixelValues = georaster.getValues(latlng.lng, latlng.lat);
-
-        //   if (pixelValues) {
-        //     console.log(
-        //       `Pixel Value at (${latlng.lat}, ${latlng.lng}):`,
-        //       pixelValues
-        //     );
-
-        //     // Change cursor to crosshair
-        //     map.getContainer().style.cursor = "crosshair";
-        //   }
-        // });
       });
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+
+      renderGeoRaster(map, isDSM);
     });
 };
