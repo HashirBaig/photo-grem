@@ -46,6 +46,14 @@ const renderLegend = (map) => {
   legend.addTo(map);
 };
 
+const getControlPanelHeader = () => {
+  const headerDiv = document.createElement("h5");
+  headerDiv.className = "text-center fw-bolder";
+  headerDiv.innerText = "Controls";
+
+  return headerDiv;
+};
+
 const renderControlPanel = (map) => {
   const panelControl = L.Control.extend({
     options: {
@@ -64,38 +72,78 @@ const renderControlPanel = (map) => {
       panelControlDiv.style.backgroundColor = "#fdedec";
 
       // Header
-      const headerDiv = document.createElement("h5");
-      headerDiv.className = "text-center fw-bolder";
-      headerDiv.innerText = "Controls";
+      const headerDiv = getControlPanelHeader();
 
-      // Checkbox and Label
+      // Checkbox and Label - DSM
       const checkboxContainer = document.createElement("div");
       checkboxContainer.className = "form-check fs-custom";
 
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.id = "toggleDSMRaster";
-      checkbox.className = "form-check-input cursor-pointer";
-      checkbox.checked = true;
+      const checkboxDSM = document.createElement("input");
+      checkboxDSM.type = "checkbox";
+      checkboxDSM.id = "toggleDSMRaster";
+      checkboxDSM.className = "form-check-input cursor-pointer";
+      checkboxDSM.checked = true;
 
-      const label = document.createElement("label");
-      label.htmlFor = "toggleDSMRaster";
-      label.innerText = "Digital Surface Model";
-      label.className = "form-check-label";
+      const labelDSM = document.createElement("label");
+      labelDSM.htmlFor = "toggleDSMRaster";
+      labelDSM.innerText = "Digital Surface Model";
+      labelDSM.className = "form-check-label";
+
+      // Checkbox and Label - DTM
+      const checkboxDTMContainer = document.createElement("div");
+      checkboxDTMContainer.className = "form-check fs-custom";
+
+      const checkboxDTM = document.createElement("input");
+      checkboxDTM.type = "checkbox";
+      checkboxDTM.id = "toggleDTMRaster";
+      checkboxDTM.className = "form-check-input cursor-pointer";
+      checkboxDTM.checked = false;
+
+      const labelDTM = document.createElement("label");
+      labelDTM.htmlFor = "toggleDTMRaster";
+      labelDTM.innerText = "Digital Terrain Model";
+      labelDTM.className = "form-check-label";
 
       // Append elements
-      checkboxContainer.appendChild(checkbox);
-      checkboxContainer.appendChild(label);
+      checkboxContainer.appendChild(checkboxDSM);
+      checkboxContainer.appendChild(labelDSM);
 
+      checkboxDTMContainer.appendChild(checkboxDTM);
+      checkboxDTMContainer.appendChild(labelDTM);
+
+      // Append to CP
       panelControlDiv.appendChild(headerDiv);
       panelControlDiv.appendChild(checkboxContainer);
+      panelControlDiv.appendChild(checkboxDTMContainer);
 
       // On change methods
-      checkbox.onchange = function () {
-        if (this.checked) {
-          geoRasterLayer.addTo(map);
-        } else {
+      checkboxDSM.onchange = function () {
+        if (map.hasLayer(geoRasterLayer)) {
           map.removeLayer(geoRasterLayer);
+        }
+
+        if (this.checked) {
+          checkboxDTM.checked = false;
+
+          renderGeoRaster(map);
+        } else {
+          checkboxDTM.checked = true;
+
+          renderGeoRaster(map, false);
+        }
+      };
+
+      checkboxDTM.onchange = function () {
+        if (map.hasLayer(geoRasterLayer)) {
+          map.removeLayer(geoRasterLayer);
+        }
+
+        if (this.checked) {
+          checkboxDSM.checked = false;
+          renderGeoRaster(map, false);
+        } else {
+          checkboxDSM.checked = true;
+          renderGeoRaster(map);
         }
       };
 
@@ -108,13 +156,18 @@ const renderControlPanel = (map) => {
   map.addControl(new panelControl());
 };
 
-const renderGeoRaster = (map) => {
-  var url_to_geotiff_file =
-    "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121";
+const renderGeoRaster = (map, isDSM = true) => {
+  const url_to_geotiff_file = isDSM
+    ? "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121"
+    : "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_image_dtm.tif?alt=media&token=09a90b11-866b-40b3-8c05-e5fc1a2dd194";
+
+  AppBlockUI.block();
 
   fetch(url_to_geotiff_file)
     .then((res) => res.arrayBuffer())
     .then((arrayBuffer) => {
+      AppBlockUI.unblock();
+
       parseGeoraster(arrayBuffer).then((georaster) => {
         const numberOfItems = Math.round(georaster.maxs[0]);
 
@@ -134,25 +187,11 @@ const renderGeoRaster = (map) => {
         }).addTo(map);
 
         map.fitBounds(geoRasterLayer.getBounds());
-
-        // Add event listener to log pixel values on hover
-        // geoRasterLayer.on("mousemove", function (event) {
-        //   const latlng = event.latlng;
-        //   const { x, y } = event;
-
-        //   // Convert lat/lng to raster pixel values
-        //   const pixelValues = georaster.getValues(latlng.lng, latlng.lat);
-
-        //   if (pixelValues) {
-        //     console.log(
-        //       `Pixel Value at (${latlng.lat}, ${latlng.lng}):`,
-        //       pixelValues
-        //     );
-
-        //     // Change cursor to crosshair
-        //     map.getContainer().style.cursor = "crosshair";
-        //   }
-        // });
       });
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+
+      renderGeoRaster(map, isDSM);
     });
 };
