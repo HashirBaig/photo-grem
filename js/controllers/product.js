@@ -23,7 +23,14 @@ const initMap = () => {
   renderLegend(map);
 };
 
-const renderLegend = (map) => {
+const renderLegend = (map, minVal, maxVal) => {
+  // Remove existing legend if it already exists
+  const existingLegend = document.querySelector(".info.legend");
+  if (existingLegend) {
+    existingLegend.remove();
+  }
+
+  // Create a new legend control
   const legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function () {
@@ -31,11 +38,11 @@ const renderLegend = (map) => {
 
     div.innerHTML = `
       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
-        <strong>Elevation (m)</strong><br>
-        <div style="width: 150px; height: 15px; background: linear-gradient(to right, blue, cyan, green, yellow, red);"></div>
-        <div style="display: flex; justify-content: space-between;">
-          <span>Low</span>
-          <span>High</span>
+        <strong>Elevation (m)</strong>
+        <div style="display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
+          <span>${maxVal?.toFixed(2) || 0} m</span>
+          <div style="width: 20px; height: 100px; background: linear-gradient(to bottom, red, yellow, green, cyan, blue);"></div>
+          <span>${minVal?.toFixed(2) || 0} m</span>
         </div>
       </div>
     `;
@@ -45,6 +52,35 @@ const renderLegend = (map) => {
 
   legend.addTo(map);
 };
+
+// const renderLegend = (map, minVal, maxVal) => {
+//   // Remove existing legend if it already exists
+//   const existingLegend = document.querySelector(".info.legend");
+//   if (existingLegend) {
+//     existingLegend.remove();
+//   }
+
+//   const legend = L.control({ position: "bottomright" });
+
+//   legend.onAdd = function () {
+//     const div = L.DomUtil.create("div", "info legend");
+
+//     div.innerHTML = `
+//       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
+//         <strong>Elevation (m)</strong><br>
+//         <div style="width: 150px; height: 15px; background: linear-gradient(to right, blue, cyan, green, yellow, red);"></div>
+//         <div style="display: flex; justify-content: space-between;">
+//           <span>${minVal?.toFixed(2)} m</span>
+//           <span>${maxVal?.toFixed(2)} m</span>
+//         </div>
+//       </div>
+//     `;
+
+//     return div;
+//   };
+
+//   legend.addTo(map);
+// };
 
 const getControlPanelHeader = () => {
   const headerDiv = document.createElement("h5");
@@ -169,24 +205,30 @@ const renderGeoRaster = (map, isDSM = true) => {
       AppBlockUI.unblock();
 
       parseGeoraster(arrayBuffer).then((georaster) => {
-        const numberOfItems = Math.round(georaster.maxs[0]);
+        const minVal = georaster?.mins[0]; // Get min value
+        const maxVal = georaster?.maxs[0]; // Get max value
+
+        const numberOfItems = Math.round(maxVal);
 
         // Create a Rainbow color scale from blue (low) to red (high)
         const rainbow = new Rainbow();
         rainbow.setNumberRange(1, numberOfItems);
-        rainbow.setSpectrum("blue", "cyan", "green", "yellow", "red"); // Gradient from blue to red
+        rainbow.setSpectrum("blue", "cyan", "green", "yellow", "red");
 
         geoRasterLayer = new GeoRasterLayer({
           georaster: georaster,
           opacity: 0.7,
           pixelValuesToColorFn: (vals) => {
             const value = Math.round(vals[0]);
-            return value <= 0 ? null : "#" + rainbow.colourAt(value); // Map values to colors
+            return value <= 0 ? null : "#" + rainbow.colourAt(value);
           },
-          resolution: 512, // Adjust display resolution
+          resolution: 512,
         }).addTo(map);
 
         map.fitBounds(geoRasterLayer.getBounds());
+
+        // Update the legend with min/max values
+        renderLegend(map, minVal, maxVal);
       });
     })
     .catch((error) => {
