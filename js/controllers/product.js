@@ -93,7 +93,7 @@ const renderControlPanel = (map) => {
 
       const labelDSM = document.createElement("label");
       labelDSM.htmlFor = "toggleDSMRaster";
-      labelDSM.innerText = "Digital Surface Model";
+      labelDSM.innerText = "Digital Surface Model (RMSE 0.55m)";
       labelDSM.className = "form-check-label";
 
       // Checkbox and Label - DTM
@@ -108,7 +108,7 @@ const renderControlPanel = (map) => {
 
       const labelDTM = document.createElement("label");
       labelDTM.htmlFor = "toggleDTMRaster";
-      labelDTM.innerText = "Digital Terrain Model";
+      labelDTM.innerText = "Digital Terrain Model (RMSE 0.51m)";
       labelDTM.className = "form-check-label";
 
       // Append elements
