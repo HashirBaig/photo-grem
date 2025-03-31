@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <title>Photogrem</title>
+  </head>
+  <body>
+    <div class="app min-vh-100 w-100">
+      <!-- Header -->
+      <header
+        class="app-header d-flex align-items-center justify-content-between px-3"
+      >
+        <div>
+          <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
+        </div>
+
+        <div class="d-none d-md-flex gap-md-2">
+          <!-- <a class="btn btn-primary active fw-bold" href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            Home
+          </a> -->
+
+          
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/teams_page.html"
+            id="nav-to-teams-btn"
+          >
+            <i class="fa-solid fa-users"></i>
+            Team
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/3D_viz.html"
+            id="nav-to-3D-btn"
+          >
+            <i class="fa-solid fa-user"></i>
+            3D page
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/product.html"
+            id="nav-to-product-btn"
+          >
+          <i class="fa-solid fa-map-location-dot"></i>
+            Products
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../index.html"
+            id="nav-to-teams-btn"
+          >
+            <i class="fa-solid fa-users"></i>
+            Home
+          </a>
+
+        </div>
+      </header>
+
+      <!-- Body -->
+      <div class="container-fluid my-5 px-5">
+
+        <!-- Section:: Flowchart -->
+        <section class="row mt-1">
+          <div class="col-md-2"></div>
+          <div class="col-md-8 d-flex justify-content-center">
+            <div class="card position-relative w-100">
+              <h4 class="text-color-primary text-center my-4 fw-bolder">
+                Methodology Flowchart - Photogrammetry
+              </h4>
+              <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;dark-mode&quot;:&quot;light&quot;,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36\&quot; version=\&quot;26.0.5\&quot;&gt;\n  &lt;diagram name=\&quot;Page-1\&quot; id=\&quot;YqfAJjnZ5EnZZQwuMw_5\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;3755\&quot; dy=\&quot;1305\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1200\&quot; pageHeight=\&quot;1920\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;hhIw-Vv-EXl-bSNXZbWr-3\&quot; value=\&quot;\&quot; style=\&quot;whiteSpace=wrap;html=1;fillColor=#FFC1AE;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;130\&quot; y=\&quot;64.5\&quot; width=\&quot;1170\&quot; height=\&quot;1189.5\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-1\&quot; value=\&quot;Block File\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;379\&quot; y=\&quot;250\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-3\&quot; value=\&quot;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;369\&quot; y=\&quot;150\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-4\&quot; value=\&quot;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;379\&quot; y=\&quot;160\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-5\&quot; value=\&quot;3 UAV Images\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;389\&quot; y=\&quot;170\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-6\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.433;exitY=0.967;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-5\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;399\&quot; y=\&quot;240\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;449\&quot; y=\&quot;190\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-7\&quot; value=\&quot;Import Block File into ERDAS Imagine&amp;amp;nbsp;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;380\&quot; y=\&quot;346\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-9\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-1\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-7\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;419\&quot; y=\&quot;290\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;469\&quot; y=\&quot;240\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-11\&quot; value=\&quot;Verify both Interior and Exterior Orientations&amp;lt;div&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/div&amp;gt;\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;239\&quot; y=\&quot;370\&quot; width=\&quot;140\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-15\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-12\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-14\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-12\&quot; value=\&quot;Automatic Point Measurement option (for Tie Point Generation)\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;369\&quot; y=\&quot;440\&quot; width=\&quot;140\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-13\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-7\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-12\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;419\&quot; y=\&quot;490\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;469\&quot; y=\&quot;440\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-14\&quot; value=\&quot;Generate DSM&amp;amp;nbsp;using DSM Extractor\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;369\&quot; y=\&quot;530\&quot; width=\&quot;140\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-16\&quot; value=\&quot;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;379\&quot; y=\&quot;620\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-17\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-14\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-16\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;419\&quot; y=\&quot;590\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;469\&quot; y=\&quot;540\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-18\&quot; value=\&quot;2 DSM Files (.las)&amp;amp;nbsp;&amp;lt;div&amp;gt;for 2 overlapping&amp;amp;nbsp;&amp;lt;div&amp;gt;regions&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;384\&quot; y=\&quot;624\&quot; width=\&quot;140\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-32\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;455\&quot; y=\&quot;815\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;609\&quot; y=\&quot;865\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;455\&quot; y=\&quot;835\&quot; /&gt;\n              &lt;mxPoint x=\&quot;610\&quot; y=\&quot;835\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-33\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-19\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-29\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-19\&quot; value=\&quot;Sub-Process 1 for merging and rasterizing DSM, and generating and rasterizing DTM&amp;amp;nbsp;\&quot; style=\&quot;shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;355\&quot; y=\&quot;720\&quot; width=\&quot;200\&quot; height=\&quot;90\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-23\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-18\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-19\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;419\&quot; y=\&quot;790\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;469\&quot; y=\&quot;740\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-27\&quot; value=\&quot;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;945\&quot; y=\&quot;264\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-28\&quot; value=\&quot;2 DSM Files for 2 overlapping&amp;amp;nbsp;&amp;lt;div&amp;gt;regions&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;950\&quot; y=\&quot;268\&quot; width=\&quot;140\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-29\&quot; value=\&quot;Import into CloudCompare\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;952\&quot; y=\&quot;358\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-30\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.443;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-28\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-29\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;935\&quot; y=\&quot;458\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;985\&quot; y=\&quot;408\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-1\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-2\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;1013\&quot; y=\&quot;504\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;1013\&quot; y=\&quot;528\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-31\&quot; value=\&quot;Choose Edit -&amp;amp;gt; Merge to merge the DSMs\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;947\&quot; y=\&quot;444\&quot; width=\&quot;130\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;Mz-uqKNl5ui7PrIYgSwL-32\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;Mz-uqKNl5ui7PrIYgSwL-29\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-31\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;935\&quot; y=\&quot;458\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;985\&quot; y=\&quot;408\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-14\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-2\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-13\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-25\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-2\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-4\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-2\&quot; value=\&quot;Output DSM file&amp;amp;nbsp;&amp;lt;div&amp;gt;(.las)&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;950.5\&quot; y=\&quot;534\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-11\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-4\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-7\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-12\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-4\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-8\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;1100.5\&quot; y=\&quot;654\&quot; /&gt;\n              &lt;mxPoint x=\&quot;1100.5\&quot; y=\&quot;694\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-4\&quot; value=\&quot;Run Cloth Simulation Filter (CSF) option in CloudCompare\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;950.5\&quot; y=\&quot;624\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-7\&quot; value=\&quot;Non Ground Points\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;1130.5\&quot; y=\&quot;594\&quot; width=\&quot;100\&quot; height=\&quot;50\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-22\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-8\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-18\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;1160.5\&quot; y=\&quot;764\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-8\&quot; value=\&quot;Ground Points\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;1110.5\&quot; y=\&quot;674\&quot; width=\&quot;120\&quot; height=\&quot;40\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-17\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-13\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-15\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-13\&quot; value=\&quot;Rasterizing the DSM\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;795.5\&quot; y=\&quot;534\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-15\&quot; value=\&quot;Output DSM file&amp;amp;nbsp;&amp;lt;div&amp;gt;(.tif)&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;795.5\&quot; y=\&quot;818\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-18\&quot; value=\&quot;Rasterize the Ground Points with interpolation, where &amp;quot;empty cell value&amp;quot; argument set to 85m\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;946.5\&quot; y=\&quot;738.5\&quot; width=\&quot;135\&quot; height=\&quot;65.5\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-23\&quot; value=\&quot;Output DTM file&amp;amp;nbsp;&amp;lt;div&amp;gt;(.tif)&amp;amp;nbsp;&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#82b366;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;940.5\&quot; y=\&quot;824\&quot; width=\&quot;150\&quot; height=\&quot;50\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-24\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-18\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-23\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;1160.5\&quot; y=\&quot;794\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;1210.5\&quot; y=\&quot;744\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-26\&quot; value=\&quot;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;160\&quot; y=\&quot;624\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-27\&quot; value=\&quot;2 DSM Files (.las)&amp;amp;nbsp;&amp;lt;div&amp;gt;from the AHN web&amp;lt;span style=&amp;quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&amp;quot;&amp;gt;site&amp;lt;/span&amp;gt;&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;166\&quot; y=\&quot;628\&quot; width=\&quot;140\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-28\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.008;entryY=0.633;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-27\&quot; target=\&quot;Mz-uqKNl5ui7PrIYgSwL-19\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;234\&quot; y=\&quot;777\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-45\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-29\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-35\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-29\&quot; value=\&quot;Creating empty point layer\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;249\&quot; y=\&quot;860\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-46\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-35\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-36\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-35\&quot; value=\&quot;Adding 20 features representing Checkpoints for DSM&amp;amp;nbsp;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;249\&quot; y=\&quot;950\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-48\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-36\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-37\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-36\&quot; value=\&quot;Run &amp;quot;Sample Raster Values&amp;quot; operation twice to extract elevation from UAV DSM and AHN DSM\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;219\&quot; y=\&quot;1030\&quot; width=\&quot;180\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-37\&quot; value=\&quot;Use Field Calculator to determine RMSE of DSM&amp;amp;nbsp;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;244\&quot; y=\&quot;1142\&quot; width=\&quot;130\&quot; height=\&quot;70\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-49\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-38\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-39\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-38\&quot; value=\&quot;Creating empty point layer\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;549\&quot; y=\&quot;864\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-50\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-39\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-40\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-39\&quot; value=\&quot;Adding 20 features representing Checkpoints for DTM&amp;amp;nbsp;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;549\&quot; y=\&quot;940\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-51\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;D62ulYelXHvSfeo2JK6D-40\&quot; target=\&quot;D62ulYelXHvSfeo2JK6D-41\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-40\&quot; value=\&quot;Run &amp;quot;Sample Raster Values&amp;quot; operation twice to extract elevation from UAV DTM and AHN DTM\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;519\&quot; y=\&quot;1030\&quot; width=\&quot;180\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-41\&quot; value=\&quot;Use Field Calculator to determine RMSE of DTM&amp;amp;nbsp;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;544\&quot; y=\&quot;1139\&quot; width=\&quot;130\&quot; height=\&quot;70\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-54\&quot; value=\&quot;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;730\&quot; y=\&quot;228\&quot; width=\&quot;545.5\&quot; height=\&quot;696\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-56\&quot; value=\&quot;Text\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;429\&quot; y=\&quot;580\&quot; width=\&quot;60\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-57\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 22px;&amp;quot;&amp;gt;Sub-Process 1&amp;lt;/font&amp;gt;\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;895.5\&quot; y=\&quot;173\&quot; width=\&quot;240\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;D62ulYelXHvSfeo2JK6D-58\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 22px;&amp;quot;&amp;gt;Main Process&amp;lt;/font&amp;gt;\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;319\&quot; y=\&quot;90\&quot; width=\&quot;240\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div>
+              <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+              <!-- start:: card graphics ::start -->
+              <img
+                src="../assets/svgs/circle.svg"
+                alt="graphic"
+                class="card-circle-graphic"
+              />
+              <!-- end:: card graphics ::end -->
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </section>
+
+        <!-- Section:: Flowchart 2 -->
+        <section class="row mt-1">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 d-flex justify-content-center">
+              <div class="card position-relative w-100">
+                <h4 class="text-color-primary text-center my-4 fw-bolder">
+                  Methodology Flowchart - Website Architecture 
+                </h4><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;dark-mode&quot;:&quot;light&quot;,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36\&quot; version=\&quot;26.1.3\&quot;&gt;\n  &lt;diagram name=\&quot;Page-1\&quot; id=\&quot;aBQ5ZHAbNp7qqoahWExB\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;1290\&quot; dy=\&quot;2442\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;1200\&quot; pageHeight=\&quot;1920\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; /&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-32\&quot; value=\&quot;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFC1AE;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;120\&quot; y=\&quot;-15\&quot; width=\&quot;887\&quot; height=\&quot;470\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-1\&quot; value=\&quot;HTML/CSS/JS\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;490\&quot; y=\&quot;100\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-2\&quot; value=\&quot;CGC/ITC server\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;670\&quot; y=\&quot;190\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-4\&quot; value=\&quot;Firebase Server\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;490\&quot; y=\&quot;190\&quot; width=\&quot;120\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-13\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;g_KQSSvjGEQfnZFuW6MA-14\&quot; target=\&quot;g_KQSSvjGEQfnZFuW6MA-1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;380\&quot; y=\&quot;190\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;370\&quot; y=\&quot;80\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;390\&quot; y=\&quot;130\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-14\&quot; value=\&quot;Leaflet\&quot; style=\&quot;shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;360\&quot; y=\&quot;180\&quot; width=\&quot;60\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-16\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;g_KQSSvjGEQfnZFuW6MA-1\&quot; target=\&quot;g_KQSSvjGEQfnZFuW6MA-2\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;760\&quot; y=\&quot;150\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;860\&quot; y=\&quot;100\&quot; as=\&quot;targetPoint\&quot; /&gt;\n            &lt;Array as=\&quot;points\&quot;&gt;\n              &lt;mxPoint x=\&quot;730\&quot; y=\&quot;130\&quot; /&gt;\n            &lt;/Array&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-17\&quot; value=\&quot;DSM .tif&amp;lt;div&amp;gt;DTM .tif&amp;lt;/div&amp;gt;\&quot; style=\&quot;shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;520\&quot; y=\&quot;290\&quot; width=\&quot;60\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-18\&quot; value=\&quot;3D DSM point cloud\&quot; style=\&quot;shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;700\&quot; y=\&quot;290\&quot; width=\&quot;60\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-19\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;g_KQSSvjGEQfnZFuW6MA-17\&quot; target=\&quot;g_KQSSvjGEQfnZFuW6MA-4\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;540\&quot; y=\&quot;260\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;590\&quot; y=\&quot;210\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-20\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; parent=\&quot;1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;729.5\&quot; y=\&quot;290\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;729.5\&quot; y=\&quot;250\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-22\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;\&quot; parent=\&quot;1\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;549.5\&quot; y=\&quot;190\&quot; as=\&quot;sourcePoint\&quot; /&gt;\n            &lt;mxPoint x=\&quot;550\&quot; y=\&quot;160\&quot; as=\&quot;targetPoint\&quot; /&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-23\&quot; value=\&quot;HTTPS\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;400\&quot; y=\&quot;110\&quot; width=\&quot;60\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-24\&quot; value=\&quot;Client\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;650\&quot; y=\&quot;110\&quot; width=\&quot;60\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-25\&quot; value=\&quot;HTTPS\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;550\&quot; y=\&quot;260\&quot; width=\&quot;60\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-26\&quot; value=\&quot;HTTPS\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;550\&quot; y=\&quot;170\&quot; width=\&quot;60\&quot; height=\&quot;10\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-27\&quot; value=\&quot;HTTPS\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;730\&quot; y=\&quot;150\&quot; width=\&quot;60\&quot; height=\&quot;10\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;g_KQSSvjGEQfnZFuW6MA-30\&quot; value=\&quot;Storage Bucket\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;450\&quot; y=\&quot;330\&quot; width=\&quot;60\&quot; height=\&quot;20\&quot; as=\&quot;geometry\&quot; /&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;\n&quot;}"></div><script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+                <!-- start:: card graphics ::start -->
+                <img
+                  src="../assets/svgs/circle.svg"
+                  alt="graphic"
+                  class="card-circle-graphic"
+                />
+                <!-- end:: card graphics ::end -->
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </section>
+
+       
+          
+
+        <!-- Section:: FAQs -->
+        <section class="row mt-5">
+            <div class="container py-5">
+                <h4 class="text-color-primary text-center my-4 fw-bolder">
+                    FAQs for Photogrammetric Product
+                </h4>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">Were the UAV images used to generate the photogrammetric products georeferenced?</div>
+                                <div class="faq-back">Yes, they have already been georeferenced. The provided block file contains the orientation parameters.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">What parameters were used while running the Cloth Simulation Filter for generating the Ground and Off-Ground points?</div>
+                                <div class="faq-back">The "scene" parameter was set to flat since the terrain in The Netherlands is generally flat. The other parameters were kept default.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">How were interpolation distances for the rasterization of the photogrammetric products (DSM & DTM) chosen?</div>
+                                <div class="faq-back">The interpolation was performed using the least distance possible such that there would be no holes in the raster (DSM and DTM) after the rasterization process.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">How were the checkpoints for estimating the RMSE values for the DSM and the DTM chosen?</div>
+                                <div class="faq-back">Spatial spread of the checkpoints is the main criteria while choosing. For the DSM, the chosen checkpoints lie on roads, cycle lanes, and building tops, while for the DTMs we chose only roads and cycle lanes. We avoided croplands and forested areas due to their seasonal growth variability.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">What is the reasoning behind representing Uncertainty using circles?</div>
+                                <div class="faq-back">In our work, uncertainty is calculated as the difference in elevations between our photogrammetric products and the AHN reference data. Since this is an absolute value, it can be represented adequately using Size as a graphic variable. Hence, the uncertainty is represented using the diameter of the circle.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">What are the sources of uncertainty in these Photogrammetric Products?</div>
+                                <div class="faq-back">Major sources of uncertainty include:<br>
+                                    a. Uncertainty due to improper camera calibration of UAV in the z-direction.<br>
+                                    b. Uncertainty during Bundle Adjustment in ERDAS.<br>
+                                    c. Uncertainty in the Cloth Simulation Filter (CSF) operation, which assumes a certain type of terrain.<br>
+                                    d. Uncertainty in the Interpolation process during rasterization of DSM & DTM.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          </section>
+
+           <!-- Section:: FAQs -->
+        <section class="row mt-5">
+            <div class="container py-5">
+                <h4 class="text-color-primary text-center my-4 fw-bolder">
+                    FAQs for Website
+                </h4>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">Where is the data stored?</div>
+                                <div class="faq-back">The point cloud is stored in ITC servers. DSM, DTM, and related files are stored in Firebase.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">Why did we use Firebase?</div>
+                                <div class="faq-back">Firebase is capable of storing and syncing data in real-time across all devices.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">What open standards and web services are used?</div>
+                                <div class="faq-back">Storage buckets in Firebase and OSM maps from Leaflet.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">What tools were used for photogrammetry?</div>
+                                <div class="faq-back">Leaflet for 2D data, Potree for 3D point cloud rendering.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4">
+                        <div class="faq-card">
+                            <div class="faq-inner">
+                                <div class="faq-front">What tools were used in website design?</div>
+                                <div class="faq-back">Figma for UI design, HTML, CSS, JS, and Bootstrap for development.</div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+
+        
+        
+        <!-- Section:: About Us -->
+
+        <section class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8 d-flex justify-content-center">
+            <div class="card position-relative min-h-180px">
+              <h4 class="text-color-primary text-center my-4 fw-bolder">
+                About Our Web App
+              </h4>
+              <p>
+                Welcome to our cutting-edge web application, designed to
+                revolutionize how photogrammetric products are analyzed and
+                visualized. Our platform utilizes the powerful Cloud Compare
+                software to create DSM, DTM and Orthophoto from aerial imagery
+                and AHN lidar data points, enabling users to gain precise
+                insights into surface and urban changes.
+              </p>
+              <!-- start:: card graphics ::start -->
+              <img
+                src="../assets/svgs/circle.svg"
+                alt="graphic"
+                class="card-circle-graphic"
+              />
+              <!-- end:: card graphics ::end -->
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </section>
+
+        <!-- Section:: What We Offer -->
+        <section class="row mt-5">
+          <div class="col-md-12">
+            <h4 class="text-color-primary text-center my-4 fw-bolder">
+              What We Offer
+            </h4>
+            <div class="row">
+              <div
+                class="col-md-12 d-flex justify-content-center gap-4 flex-wrap"
+              >
+                <div class="card team">
+                  <h5 class="text-color-primary text-center fw-semibold">
+                    DSM and DTM creation
+                  </h5>
+                  <p>
+                    Leveraging ERDAS and Cloud Compare's capabilities, our
+                    platform delivers highly accurate DSM and DTM results,
+                    making it an essential tool for professionals in urban
+                    plannin and disaster assessment.
+                  </p>
+                </div>
+
+                <div class="card team">
+                  <h5 class="text-color-primary text-center fw-semibold">
+                    Orthophoto creation
+                  </h5>
+                  <p>
+                    A true Orthophoto is created from the drone images. Our
+                    platform produces high-resolution, geometrically corrected
+                    orthophotos, ensuring accurate mapping and analysis for
+                    applications in land surveying, agriculture, and
+                    infrastructure planning.
+                  </p>
+                </div>
+
+                <div class="card team">
+                  <h5 class="text-color-primary text-center fw-semibold">
+                    Web-Based Accessibility
+                  </h5>
+                  <p>
+                    No software installation required. Our web app allows users
+                    to access and visualise data from anywhere, ensuring
+                    convenience and efficiency.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section:: Who Can Benefit -->
+        <section class="row mt-5">
+          <div class="col-md-2"></div>
+          <div class="col-md-8 d-flex justify-content-center">
+            <div class="card position-relative w-100">
+              <h4 class="text-color-primary text-center my-4 fw-bolder">
+                Who Can Benefit
+              </h4>
+              <div>
+                <p>Our web app is ideal for the following purposes</p>
+                <ul>
+                  <li>Urban planners and city administrators.</li>
+                  <li>GIS professionals and remote sensing specialists.</li>
+                  <li>Real estate developers and surveyors.</li>
+                  <li>Disaster response teams assessing structural damages.</li>
+                </ul>
+              </div>
+              <!-- start:: card graphics ::start -->
+              <img
+                src="../assets/svgs/circle.svg"
+                alt="graphic"
+                class="card-circle-graphic"
+              />
+              <!-- end:: card graphics ::end -->
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer class="position-relative bg-color-primary w-100 mt-5 rounded-top">
+        <h4 class="text-white text-center my-4 fw-bolder pt-4">
+          Why Choose Us
+        </h4>
+        <div class="text-white px-3 pb-3">
+          <p class="fw-semibold">
+            By integrating the latest advancements in photogrammetry with
+            user-friendly visualization tools, our platform empowers
+            professionals to make data-driven decisions with confidence. Whether
+            you're tracking urban expansion, evaluating infrastructure, or
+            conducting environmental assessments, our solution delivers the
+            insights you need.
+          </p>
+
+          <p class="fw-semibold">
+            Join us in transforming how we analyze and interpret photogrammetric
+            data. Explore our platform today!
+          </p>
+          <p class="fw-semibold">
+            Social: https://www.linkedin.com/company/photogrem/ <br>
+            Mail: photogrem@gmail.com <br>
+          </p>
+
+          <section id="copyright">
+            <div class="wrapper">
+              &copy; Copyright @2025 by Photogrem
+          </section> <!-- copyright -->
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <script src="../js/controllers/index.js"></script>
+    <script src="../js/helper.js"></script>
+  </body>
+</html>
