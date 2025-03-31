@@ -17,6 +17,7 @@
 .app-header {
   height: var(--app-header-h);
   width: 100%;
+  padding: 2rem 4rem;
 }
 
 .app-body {
@@ -199,7 +200,8 @@ ul li::before {
 .faq-card:hover .faq-inner {
   transform: rotateY(180deg);
 }
-.faq-front, .faq-back {
+.faq-front,
+.faq-back {
   position: absolute;
   width: 100%;
   height: 100%;
