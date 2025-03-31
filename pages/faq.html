@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <title>FAQs | Photogrem</title>
+  </head>
+  <body>
+    <div id="root" class="app min-vh-100 w-100">
+      <!-- Header -->
+      <header
+        class="app-header d-flex align-items-center justify-content-between px-3"
+      >
+        <div>
+          <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
+        </div>
+
+        <a class="btn rounded-circle" href="../index.html" id="back-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+      </header>
+
+      <!-- app body -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Section:: FAQs -->
+            <section class="row mt-5">
+              <div class="container py-5">
+                <h4 class="text-color-primary text-center my-4 fw-bolder">
+                  FAQs for Photogrammetric Product
+                </h4>
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          Were the UAV images used to generate the
+                          photogrammetric products georeferenced?
+                        </div>
+                        <div class="faq-back">
+                          Yes, they have already been georeferenced. The
+                          provided block file contains the orientation
+                          parameters.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          What parameters were used while running the Cloth
+                          Simulation Filter for generating the Ground and
+                          Off-Ground points?
+                        </div>
+                        <div class="faq-back">
+                          The "scene" parameter was set to flat since the
+                          terrain in The Netherlands is generally flat. The
+                          other parameters were kept default.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          How were interpolation distances for the rasterization
+                          of the photogrammetric products (DSM & DTM) chosen?
+                        </div>
+                        <div class="faq-back">
+                          The interpolation was performed using the least
+                          distance possible such that there would be no holes in
+                          the raster (DSM and DTM) after the rasterization
+                          process.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          How were the checkpoints for estimating the RMSE
+                          values for the DSM and the DTM chosen?
+                        </div>
+                        <div class="faq-back">
+                          Spatial spread of the checkpoints is the main criteria
+                          while choosing. For the DSM, the chosen checkpoints
+                          lie on roads, cycle lanes, and building tops, while
+                          for the DTMs we chose only roads and cycle lanes. We
+                          avoided croplands and forested areas due to their
+                          seasonal growth variability.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          What is the reasoning behind representing Uncertainty
+                          using circles?
+                        </div>
+                        <div class="faq-back">
+                          In our work, uncertainty is calculated as the
+                          difference in elevations between our photogrammetric
+                          products and the AHN reference data. Since this is an
+                          absolute value, it can be represented adequately using
+                          Size as a graphic variable. Hence, the uncertainty is
+                          represented using the diameter of the circle.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          What are the sources of uncertainty in these
+                          Photogrammetric Products?
+                        </div>
+                        <div class="faq-back">
+                          Major sources of uncertainty include:<br />
+                          a. Uncertainty due to improper camera calibration of
+                          UAV in the z-direction.<br />
+                          b. Uncertainty during Bundle Adjustment in ERDAS.<br />
+                          c. Uncertainty in the Cloth Simulation Filter (CSF)
+                          operation, which assumes a certain type of terrain.<br />
+                          d. Uncertainty in the Interpolation process during
+                          rasterization of DSM & DTM.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section:: FAQs -->
+            <section class="row mt-5">
+              <div class="container py-5">
+                <h4 class="text-color-primary text-center my-4 fw-bolder">
+                  FAQs for Website
+                </h4>
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">Where is the data stored?</div>
+                        <div class="faq-back">
+                          The point cloud is stored in ITC servers. DSM, DTM,
+                          and related files are stored in Firebase.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">Why did we use Firebase?</div>
+                        <div class="faq-back">
+                          Firebase is capable of storing and syncing data in
+                          real-time across all devices.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          What open standards and web services are used?
+                        </div>
+                        <div class="faq-back">
+                          Storage buckets in Firebase and OSM maps from Leaflet.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          What tools were used for photogrammetry?
+                        </div>
+                        <div class="faq-back">
+                          Leaflet for 2D data, Potree for 3D point cloud
+                          rendering.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="faq-card">
+                      <div class="faq-inner">
+                        <div class="faq-front">
+                          What tools were used in website design?
+                        </div>
+                        <div class="faq-back">
+                          Figma for UI design, HTML, CSS, JS, and Bootstrap for
+                          development.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/helper.js"></script>
+  </body>
+</html>

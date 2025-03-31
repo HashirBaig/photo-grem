@@ -17,7 +17,7 @@
 .app-header {
   height: var(--app-header-h);
   width: 100%;
-  padding: 2rem 6rem;
+  padding: 2rem 6rem 2rem 1.5rem;
 }
 
 .app-body {
