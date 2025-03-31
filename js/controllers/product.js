@@ -53,35 +53,6 @@ const renderLegend = (map, minVal, maxVal) => {
   legend.addTo(map);
 };
 
-// const renderLegend = (map, minVal, maxVal) => {
-//   // Remove existing legend if it already exists
-//   const existingLegend = document.querySelector(".info.legend");
-//   if (existingLegend) {
-//     existingLegend.remove();
-//   }
-
-//   const legend = L.control({ position: "bottomright" });
-
-//   legend.onAdd = function () {
-//     const div = L.DomUtil.create("div", "info legend");
-
-//     div.innerHTML = `
-//       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
-//         <strong>Elevation (m)</strong><br>
-//         <div style="width: 150px; height: 15px; background: linear-gradient(to right, blue, cyan, green, yellow, red);"></div>
-//         <div style="display: flex; justify-content: space-between;">
-//           <span>${minVal?.toFixed(2)} m</span>
-//           <span>${maxVal?.toFixed(2)} m</span>
-//         </div>
-//       </div>
-//     `;
-
-//     return div;
-//   };
-
-//   legend.addTo(map);
-// };
-
 const getControlPanelHeader = () => {
   const headerDiv = document.createElement("h5");
   headerDiv.className = "text-center fw-bolder";
