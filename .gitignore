@@ -23,3 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 ./pages/las_file/*
+
+*octree.bin

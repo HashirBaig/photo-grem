@@ -65,6 +65,10 @@
 .fs-custom {
   font-size: 0.9rem !important;
 }
+
+.z-10000 {
+  z-index: 10000;
+}
 /* END:: UTILITIES ::END*/
 
 /* START:: TEAM MEMBER PICTURE ::START */
