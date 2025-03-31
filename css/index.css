@@ -84,6 +84,12 @@
   width: 5rem;
   height: 5rem;
 }
+
+.picture-container.chameli {
+  width: 5rem;
+  height: 5rem;
+}
+
 .picture-container > .member-pic {
   width: 6rem;
   height: auto;
