@@ -131,12 +131,16 @@ const renderControlPanel = (map) => {
 
         if (this.checked) {
           checkboxDTM.checked = false;
+          // checkboxUncertaintyDSM.checked = false;
+          // checkboxUncertaintyDTM.checked = false;
 
           renderGeoRaster(map);
         } else {
-          checkboxDTM.checked = true;
-
-          renderGeoRaster(map, false);
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map);
         }
       };
 
@@ -147,12 +151,57 @@ const renderControlPanel = (map) => {
 
         if (this.checked) {
           checkboxDSM.checked = false;
+          // checkboxUncertaintyDSM.checked = false;
+          // checkboxUncertaintyDTM.checked = false;
+
           renderGeoRaster(map, false);
         } else {
-          checkboxDSM.checked = true;
-          renderGeoRaster(map);
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map);
         }
       };
+
+      // checkboxUncertaintyDSM.onchange = function () {
+      //   if (map.hasLayer(geoRasterLayer)) {
+      //     map.removeLayer(geoRasterLayer);
+      //   }
+
+      //   if (this.checked) {
+      //     checkboxDSM.checked = false;
+      //     checkboxDTM.checked = false;
+      //     checkboxUncertaintyDTM.checked = false;
+          
+      //     renderGeoRaster(map, false);
+      //   } else {
+      //     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      //       maxZoom: 19,
+      //       attribution:
+      //         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      //     }).addTo(map);
+      //   }
+
+      //   checkboxUncertaintyDTM.onchange = function () {
+      //     if (map.hasLayer(geoRasterLayer)) {
+      //       map.removeLayer(geoRasterLayer);
+      //     }
+  
+      //     if (this.checked) {
+      //       checkboxDSM.checked = false;
+      //       checkboxDTM.checked = false;
+      //       checkboxUncertaintyDSM.checked = false;
+            
+      //       renderGeoRaster(map, false);
+      //     } else {
+      //       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      //         maxZoom: 19,
+      //         attribution:
+      //           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      //       }).addTo(map);
+      //     }
+      // };
 
       // Return the panel div
       return panelControlDiv;
@@ -196,7 +245,7 @@ const renderGeoRaster = (map, isDSM = true) => {
           resolution: 512,
         }).addTo(map);
 
-        map.fitBounds(geoRasterLayer.getBounds());
+        // map.fitBounds(geoRasterLayer.getBounds());
 
         // Update the legend with min/max values
         renderLegend(map, minVal, maxVal);
