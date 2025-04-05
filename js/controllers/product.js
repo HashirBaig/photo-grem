@@ -111,6 +111,21 @@ const renderControlPanel = (map) => {
       labelDTM.innerText = "Digital Terrain Model (RMSE 0.51m)";
       labelDTM.className = "form-check-label";
 
+      // Checkbox and Label - AHN_DSM
+      const checkboxAHN_DSMContainer = document.createElement("div");
+      checkboxAHN_DSMContainer.className = "form-check fs-custom";
+
+      const checkboxAHN_DSM = document.createElement("input");
+      checkboxAHN_DSM.type = "checkbox";
+      checkboxAHN_DSM.id = "toggleAHN_DSM_Raster";
+      checkboxAHN_DSM.className = "form-check-input cursor-pointer";
+      checkboxAHN_DSM.checked = true;
+
+      const labelAHN_DSM = document.createElement("label");
+      labelAHN_DSM.htmlFor = "toggleAHN_DSM_Raster";
+      labelAHN_DSM.innerText = "AHN DSM";
+      labelAHN_DSM.className = "form-check-label";
+
       // Append elements
       checkboxContainer.appendChild(checkboxDSM);
       checkboxContainer.appendChild(labelDSM);
