@@ -175,6 +175,15 @@ const renderGeoRaster = (map, isDSM = true) => {
     });
 };
 
+const scaleRadius = (error, minError, maxError) => {
+  const minRadius = 8;
+  const maxRadius = 40;
+
+  // Normalize error between min and max
+  const normalized = (error - minError) / (maxError - minError);
+  return minRadius + normalized * (maxRadius - minRadius);
+};
+
 // To be called when a checkbox for one of the vector layers is ticked
 const renderVectorLayer = (map, isDSM = true) => {
   const url_to_geojson = isDSM ? DSM_UNCERTAINITY_URL : DTM_UNCERTAINITY_URL;
@@ -184,11 +193,36 @@ const renderVectorLayer = (map, isDSM = true) => {
   fetch(url_to_geojson)
     .then((response) => response.json())
     .then((data) => {
-      console.log("data: ", data);
       AppBlockUI.unblock();
 
-      L.geoJSON(Uncy_DSM_points).addTo(map);
-      
+      // Determine min and max error for scaling
+      const errors = data.features
+        .map((f) => parseFloat(f.properties.Abbsolute_Eror))
+        .filter((v) => !isNaN(v));
+      const minError = Math.min(...errors);
+      const maxError = Math.max(...errors);
+
+      L.geoJSON(UNCY_DSM_POINTS, {
+        pointToLayer: function (feature, latlng) {
+          const error = parseFloat(feature.properties.Abbsolute_Eror);
+          const radius = isNaN(error)
+            ? 4
+            : scaleRadius(error, minError, maxError);
+
+          return L.circleMarker(latlng, {
+            radius: radius,
+            fillColor: "red",
+            color: "red",
+            weight: 1,
+            opacity: 0.75,
+            fillOpacity: 0.75,
+          });
+        },
+        onEachFeature: function (feature, layer) {
+          const err = feature.properties.Abbsolute_Eror ?? "N/A";
+          layer.bindPopup(`Uncertainty: ${err}`);
+        },
+      }).addTo(map);
     })
     .catch((error) => {
       AppBlockUI.unblock();
