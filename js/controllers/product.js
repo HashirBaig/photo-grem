@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Global Variable
 let geoRasterLayer = null;
-let geoVectorLayer = null;
+let vectorLayer = null;
 
 const initMap = () => {
   var map = L.map("map").setView([52.240304, 6.853039], 16);
@@ -15,51 +15,25 @@ const initMap = () => {
   }).addTo(map);
 
   // Render Geo Raster
-  // renderGeoRaster(map);
-  renderVectorLayer(map);
+  renderGeoRaster(map);
 
   // Control Panel
   renderControlPanel(map);
-
-  // Map Lengend
-  // renderLegend(map);
 };
-
-// const renderLegend = (map, minVal, maxVal) => {
-//   // Remove existing legend if it already exists
-//   const existingLegend = document.querySelector(".info.legend");
-//   if (existingLegend) {
-//     existingLegend.remove();
-//   }
-
-//   // Create a new legend control
-//   const legend = L.control({ position: "bottomright" });
-
-//   legend.onAdd = function () {
-//     const div = L.DomUtil.create("div", "info legend");
-
-//     div.innerHTML = `
-//       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
-//         <strong>Elevation (m)</strong>
-//         <div style="display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
-//           <span>${maxVal?.toFixed(2) || 0} m</span>
-//           <div style="width: 20px; height: 100px; background: linear-gradient(to bottom, red, yellow, green, cyan, blue);"></div>
-//           <span>${minVal?.toFixed(2) || 0} m</span>
-//         </div>
-//       </div>
-//     `;
-
-//     return div;
-//   };
-
-//   legend.addTo(map);
-// };
 
 const renderLegend = (map, minVal, maxVal) => {
   // Remove existing elevation legend
   const existingElevationLegend = document.querySelector(".legend-elevation");
   if (existingElevationLegend) {
     existingElevationLegend.remove();
+  }
+
+  // Also remove any previously rendered uncertainty legend
+  const existingUncertaintyLegend = document.querySelector(
+    ".legend-uncertainty"
+  );
+  if (existingUncertaintyLegend) {
+    existingUncertaintyLegend.remove();
   }
 
   const legend = L.control({ position: "bottomright" });
@@ -103,8 +77,8 @@ const renderControlPanel = (map) => {
         "leaflet-bar leaflet-control leaflet-control-custom bg-white"
       );
 
-      panelControlDiv.style.width = "18rem";
-      panelControlDiv.style.minHeight = "10rem";
+      panelControlDiv.style.width = "20rem";
+      panelControlDiv.style.height = "fit-content";
       panelControlDiv.style.padding = "12px";
       panelControlDiv.style.borderRadius = "6px";
       panelControlDiv.style.backgroundColor = "#fdedec";
@@ -136,6 +110,10 @@ const renderControlPanel = (map) => {
       selectEl.onchange = function (e) {
         if (map?.hasLayer(geoRasterLayer)) {
           map?.removeLayer(geoRasterLayer);
+        } else if (map?.hasLayer(vectorLayer)) {
+          map?.removeLayer(vectorLayer);
+        } else {
+          // pass
         }
 
         if (e?.target?.value === "dsm") {
@@ -204,15 +182,14 @@ const renderGeoRaster = (map, isDSM = true) => {
 };
 
 const scaleRadius = (error, minError, maxError) => {
-  const minRadius = 8;
-  const maxRadius = 40;
+  const minRadius = 4;
+  const maxRadius = 20;
 
   // Normalize error between min and max
   const normalized = (error - minError) / (maxError - minError);
   return minRadius + normalized * (maxRadius - minRadius);
 };
 
-// To be called when a checkbox for one of the vector layers is ticked
 const renderUncyLegend = (map, geojsonData) => {
   // Remove any elevation legend before adding uncertainty legend
   const existingElevationLegend = document.querySelector(".legend-elevation");
@@ -220,10 +197,18 @@ const renderUncyLegend = (map, geojsonData) => {
     existingElevationLegend.remove();
   }
 
-  const legend = L.control({ position: "bottomleft" });
+  // Also remove any previously rendered uncertainty legend
+  const existingUncertaintyLegend = document.querySelector(
+    ".legend-uncertainty"
+  );
+  if (existingUncertaintyLegend) {
+    existingUncertaintyLegend.remove();
+  }
+
+  const legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function () {
-    const div = L.DomUtil.create("div", "info legend legend-uncertainty"); // <-- Give unique class
+    const div = L.DomUtil.create("div", "info legend legend-uncertainty");
 
     div.style.background = "white";
     div.style.padding = "10px";
@@ -231,22 +216,22 @@ const renderUncyLegend = (map, geojsonData) => {
     div.style.boxShadow = "0 0 5px rgba(0,0,0,0.3)";
     div.innerHTML = "<strong>Uncertainty (Error)</strong><br>";
 
-    const errors = geojsonData.features
-      .map((f) => parseFloat(f?.properties?.Abbsolute_Eror))
+    const errors = geojsonData?.features
+      .map((f) =>
+        parseFloat(
+          f?.properties?.Abbsolute_Eror || f?.properties?.DTM_Uncertainty
+        )
+      )
       .filter((v) => !isNaN(v));
+
+    console.log("err-val: ", errors);
+
     const minError = Math.min(...errors);
     const maxError = Math.max(...errors);
     const samples = [minError, (minError + maxError) / 2, maxError];
 
-    const scaleRadius = (error) => {
-      const minRadius = 8;
-      const maxRadius = 40;
-      const normalized = (error - minError) / (maxError - minError);
-      return minRadius + normalized * (maxRadius - minRadius);
-    };
-
     samples.forEach((error) => {
-      const radius = scaleRadius(error);
+      const radius = scaleRadius(error, minError, maxError);
       div.innerHTML += `
         <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
           <svg width="${radius * 2}" height="${radius * 2}">
@@ -274,13 +259,15 @@ const renderVectorLayer = (map, isDSM = true) => {
       AppBlockUI.unblock();
 
       // Determine min and max error for scaling
-      const errors = data.features
+      const errors = data?.features
         .map((f) => parseFloat(f.properties.Abbsolute_Eror))
         .filter((v) => !isNaN(v));
       const minError = Math.min(...errors);
       const maxError = Math.max(...errors);
 
-      L.geoJSON(UNCY_DSM_POINTS, {
+      // console.log("data: ", data);
+
+      vectorLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
           const error = parseFloat(feature.properties.Abbsolute_Eror);
           const radius = isNaN(error)
@@ -292,18 +279,20 @@ const renderVectorLayer = (map, isDSM = true) => {
             fillColor: "red",
             color: "red",
             weight: 1,
-            opacity: 0.75,
-            fillOpacity: 0.75,
+            opacity: 0.65,
+            fillOpacity: 0.65,
           });
         },
         onEachFeature: function (feature, layer) {
           const err = feature.properties.Abbsolute_Eror ?? "N/A";
           layer.bindPopup(`Uncertainty: ${err}`);
         },
-      }).addTo(map);
+      });
+
+      vectorLayer.addTo(map);
 
       // Render legend
-      renderUncyLegend(map, UNCY_DSM_POINTS);
+      renderUncyLegend(map, data);
     })
     .catch((error) => {
       AppBlockUI.unblock();
