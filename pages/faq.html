@@ -38,15 +38,60 @@
     <div id="root" class="app min-vh-100 w-100">
       <!-- Header -->
       <header
-        class="app-header d-flex align-items-center justify-content-between px-3"
+        class="app-header d-flex align-items-center justify-content-between"
       >
         <div>
-          <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
+          <a href="../index.html">
+            <img src="../assets/svgs/app_logo.svg" alt="Photogrem" />
+          </a>
         </div>
 
-        <a class="btn rounded-circle" href="../index.html" id="back-btn">
-          <i class="fa-solid fa-arrow-left"></i>
-        </a>
+        <div class="d-none d-md-flex gap-md-2">
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/teams_page.html"
+            id="nav-to-teams-btn"
+          >
+            <i class="fa-solid fa-users"></i>
+            Team
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/3D_viz.html"
+            id="nav-to-3D-btn"
+          >
+            <i class="fa-solid fa-cube"></i>
+            DSM Viewer
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/product.html"
+            id="nav-to-product-btn"
+          >
+            <i class="fa-solid fa-map-location-dot"></i>
+            Products
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/workflow.html"
+            id="nav-to-workflow-btn"
+          >
+            <i class="fa-solid fa-briefcase"></i>
+            Workflow
+          </a>
+
+          <a
+            class="btn btn-primary fw-bold"
+            href="../pages/faq.html"
+            id="nav-to-faq-btn"
+          >
+            <i class="fa-solid fa-question"></i>
+            FAQs
+          </a>
+        </div>
       </header>
 
       <!-- app body -->
@@ -220,7 +265,7 @@
                     <div class="faq-card">
                       <div class="faq-inner">
                         <div class="faq-front">
-                          What tools were used for rendering the photogrammetric 
+                          What tools were used for rendering the photogrammetric
                           products on the Client Side?
                         </div>
                         <div class="faq-back">
