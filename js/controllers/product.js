@@ -15,7 +15,8 @@ const initMap = () => {
   }).addTo(map);
 
   // Render Geo Raster
-  renderGeoRaster(map);
+  // renderGeoRaster(map);
+  renderVectorLayer(map);
 
   // Control Panel
   renderControlPanel(map);
@@ -183,30 +184,11 @@ const renderVectorLayer = (map, isDSM = true) => {
   fetch(url_to_geojson)
     .then((response) => response.json())
     .then((data) => {
+      console.log("data: ", data);
       AppBlockUI.unblock();
 
-      L.geoJSON(data, {
-        pointToLayer: function (feature, latlng) {
-          const Uncertainty = feature.properties.Abbsolute_Eror; // change 'value' to your attribute name
-
-          let scaling_factor = 5;
-
-          // Scale the radius (adjust scaling as needed)
-          const radius = Math.pow(Uncertainty, 2) * scaling_factor; // or use d3.scale if you want more control
-
-          return L.circleMarker(latlng, {
-            radius: radius,
-            fillColor: "#0078ff",
-            color: "#000",
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.7,
-          });
-        },
-        onEachFeature: function (feature, layer) {
-          layer.bindPopup("Uncertainty: ${feature.properties.Abbsolute_Eror}");
-        },
-      }).addTo(map);
+      L.geoJSON(Uncy_DSM_points).addTo(map);
+      
     })
     .catch((error) => {
       AppBlockUI.unblock();
