@@ -1,7 +1,8 @@
 const DSM_URL =
-  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121";
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dsm.tif?alt=media&token=4a057b9f-dc7f-4709-b490-fab0f4e873f5";
+
 const DTM_URL =
-  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_image_dtm.tif?alt=media&token=09a90b11-866b-40b3-8c05-e5fc1a2dd194";
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dtm.tif?alt=media&token=5f5d6bbd-159b-43a7-97a7-656d6f96dcc9";
 
 const DSM_UNCERTAINITY_URL =
   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/dsm_uncy_4326.geojson?alt=media&token=35b4ebd0-320a-4120-a1b9-3e2382c552a6";
