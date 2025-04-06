@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Global Variable
 let geoRasterLayer = null;
+let vectorLayer = null;
 
 const initMap = () => {
   var map = L.map("map").setView([52.240304, 6.853039], 16);
@@ -18,23 +19,27 @@ const initMap = () => {
 
   // Control Panel
   renderControlPanel(map);
-
-  // Map Lengend
-  renderLegend(map);
 };
 
 const renderLegend = (map, minVal, maxVal) => {
-  // Remove existing legend if it already exists
-  const existingLegend = document.querySelector(".info.legend");
-  if (existingLegend) {
-    existingLegend.remove();
+  // Remove existing elevation legend
+  const existingElevationLegend = document.querySelector(".legend-elevation");
+  if (existingElevationLegend) {
+    existingElevationLegend.remove();
   }
 
-  // Create a new legend control
+  // Also remove any previously rendered uncertainty legend
+  const existingUncertaintyLegend = document.querySelector(
+    ".legend-uncertainty"
+  );
+  if (existingUncertaintyLegend) {
+    existingUncertaintyLegend.remove();
+  }
+
   const legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function () {
-    const div = L.DomUtil.create("div", "info legend");
+    const div = L.DomUtil.create("div", "info legend legend-elevation"); // <-- Unique class
 
     div.innerHTML = `
       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
@@ -46,7 +51,6 @@ const renderLegend = (map, minVal, maxVal) => {
         </div>
       </div>
     `;
-
     return div;
   };
 
@@ -73,7 +77,8 @@ const renderControlPanel = (map) => {
         "leaflet-bar leaflet-control leaflet-control-custom bg-white"
       );
 
-      panelControlDiv.style.width = "12rem";
+      panelControlDiv.style.width = "20rem";
+      panelControlDiv.style.height = "fit-content";
       panelControlDiv.style.padding = "12px";
       panelControlDiv.style.borderRadius = "6px";
       panelControlDiv.style.backgroundColor = "#fdedec";
@@ -81,76 +86,44 @@ const renderControlPanel = (map) => {
       // Header
       const headerDiv = getControlPanelHeader();
 
-      // Checkbox and Label - DSM
-      const checkboxContainer = document.createElement("div");
-      checkboxContainer.className = "form-check fs-custom";
+      const selectContainerDiv = document.createElement("div");
+      selectContainerDiv.className = "w-100";
 
-      const checkboxDSM = document.createElement("input");
-      checkboxDSM.type = "checkbox";
-      checkboxDSM.id = "toggleDSMRaster";
-      checkboxDSM.className = "form-check-input cursor-pointer";
-      checkboxDSM.checked = true;
+      const selectEl = document.createElement("select");
+      selectEl.className = "form-select form-select-sm";
+      selectEl.id = "ph-porduct-list";
 
-      const labelDSM = document.createElement("label");
-      labelDSM.htmlFor = "toggleDSMRaster";
-      labelDSM.innerText = "Digital Surface Model (RMSE 0.55m)";
-      labelDSM.className = "form-check-label";
+      // Create and append the rest of the options
+      productOptionList.forEach((opt) => {
+        const optionEl = document.createElement("option");
+        optionEl.value = opt.value;
+        optionEl.textContent = opt.label;
+        selectEl.appendChild(optionEl);
+      });
 
-      // Checkbox and Label - DTM
-      const checkboxDTMContainer = document.createElement("div");
-      checkboxDTMContainer.className = "form-check fs-custom";
-
-      const checkboxDTM = document.createElement("input");
-      checkboxDTM.type = "checkbox";
-      checkboxDTM.id = "toggleDTMRaster";
-      checkboxDTM.className = "form-check-input cursor-pointer";
-      checkboxDTM.checked = false;
-
-      const labelDTM = document.createElement("label");
-      labelDTM.htmlFor = "toggleDTMRaster";
-      labelDTM.innerText = "Digital Terrain Model (RMSE 0.51m)";
-      labelDTM.className = "form-check-label";
-
-      // Append elements
-      checkboxContainer.appendChild(checkboxDSM);
-      checkboxContainer.appendChild(labelDSM);
-
-      checkboxDTMContainer.appendChild(checkboxDTM);
-      checkboxDTMContainer.appendChild(labelDTM);
+      selectContainerDiv.appendChild(selectEl);
 
       // Append to CP
       panelControlDiv.appendChild(headerDiv);
-      panelControlDiv.appendChild(checkboxContainer);
-      panelControlDiv.appendChild(checkboxDTMContainer);
+      panelControlDiv.appendChild(selectContainerDiv);
 
-      // On change methods
-      checkboxDSM.onchange = function () {
-        if (map.hasLayer(geoRasterLayer)) {
-          map.removeLayer(geoRasterLayer);
-        }
-
-        if (this.checked) {
-          checkboxDTM.checked = false;
-
-          renderGeoRaster(map);
+      selectEl.onchange = function (e) {
+        if (map?.hasLayer(geoRasterLayer)) {
+          map?.removeLayer(geoRasterLayer);
+        } else if (map?.hasLayer(vectorLayer)) {
+          map?.removeLayer(vectorLayer);
         } else {
-          checkboxDTM.checked = true;
-
-          renderGeoRaster(map, false);
-        }
-      };
-
-      checkboxDTM.onchange = function () {
-        if (map.hasLayer(geoRasterLayer)) {
-          map.removeLayer(geoRasterLayer);
+          // pass
         }
 
-        if (this.checked) {
-          checkboxDSM.checked = false;
-          renderGeoRaster(map, false);
-        } else {
-          checkboxDSM.checked = true;
+        if (e?.target?.value === "dsm") {
           renderGeoRaster(map);
+        } else if (e?.target?.value === "dtm") {
+          renderGeoRaster(map, false);
+        } else if (e?.target?.value === "dsm_uncy") {
+          renderVectorLayer(map);
+        } else {
+          renderVectorLayer(map, false);
         }
       };
 
@@ -164,9 +137,7 @@ const renderControlPanel = (map) => {
 };
 
 const renderGeoRaster = (map, isDSM = true) => {
-  const url_to_geotiff_file = isDSM
-    ? "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_enschede_dsm.tif?alt=media&token=1aa5910e-ef4f-48ba-afb7-4031fff16121"
-    : "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/exported_image_dtm.tif?alt=media&token=09a90b11-866b-40b3-8c05-e5fc1a2dd194";
+  const url_to_geotiff_file = isDSM ? DSM_URL : DTM_URL;
 
   AppBlockUI.block();
 
@@ -196,7 +167,7 @@ const renderGeoRaster = (map, isDSM = true) => {
           resolution: 512,
         }).addTo(map);
 
-        map.fitBounds(geoRasterLayer.getBounds());
+        // map.fitBounds(geoRasterLayer.getBounds());
 
         // Update the legend with min/max values
         renderLegend(map, minVal, maxVal);
@@ -207,5 +178,124 @@ const renderGeoRaster = (map, isDSM = true) => {
       console.log("error: ", error);
 
       renderGeoRaster(map, isDSM);
+    });
+};
+
+const scaleRadius = (error, minError, maxError) => {
+  const minRadius = 4;
+  const maxRadius = 20;
+
+  // Normalize error between min and max
+  const normalized = (error - minError) / (maxError - minError);
+  return minRadius + normalized * (maxRadius - minRadius);
+};
+
+const renderUncyLegend = (map, geojsonData) => {
+  // Remove any elevation legend before adding uncertainty legend
+  const existingElevationLegend = document.querySelector(".legend-elevation");
+  if (existingElevationLegend) {
+    existingElevationLegend.remove();
+  }
+
+  // Also remove any previously rendered uncertainty legend
+  const existingUncertaintyLegend = document.querySelector(
+    ".legend-uncertainty"
+  );
+  if (existingUncertaintyLegend) {
+    existingUncertaintyLegend.remove();
+  }
+
+  const legend = L.control({ position: "bottomright" });
+
+  legend.onAdd = function () {
+    const div = L.DomUtil.create("div", "info legend legend-uncertainty");
+
+    div.style.background = "white";
+    div.style.padding = "10px";
+    div.style.borderRadius = "6px";
+    div.style.boxShadow = "0 0 5px rgba(0,0,0,0.3)";
+    div.innerHTML = "<strong>Uncertainty (Error)</strong><br>";
+
+    const errors = geojsonData?.features
+      .map((f) =>
+        parseFloat(
+          f?.properties?.Abbsolute_Eror || f?.properties?.DTM_Uncertainty
+        )
+      )
+      .filter((v) => !isNaN(v));
+
+    console.log("err-val: ", errors);
+
+    const minError = Math.min(...errors);
+    const maxError = Math.max(...errors);
+    const samples = [minError, (minError + maxError) / 2, maxError];
+
+    samples.forEach((error) => {
+      const radius = scaleRadius(error, minError, maxError);
+      div.innerHTML += `
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+          <svg width="${radius * 2}" height="${radius * 2}">
+            <circle cx="${radius}" cy="${radius}" r="${radius}" fill="red" fill-opacity="0.75" stroke="red" stroke-width="1" />
+          </svg>
+          <span>${error?.toFixed(2)}</span>
+        </div>
+      `;
+    });
+
+    return div;
+  };
+
+  legend.addTo(map);
+};
+
+const renderVectorLayer = (map, isDSM = true) => {
+  const url_to_geojson = isDSM ? DSM_UNCERTAINITY_URL : DTM_UNCERTAINITY_URL;
+
+  AppBlockUI.block();
+
+  fetch(url_to_geojson)
+    .then((response) => response.json())
+    .then((data) => {
+      AppBlockUI.unblock();
+
+      // Determine min and max error for scaling
+      const errors = data?.features
+        .map((f) => parseFloat(f.properties.Abbsolute_Eror))
+        .filter((v) => !isNaN(v));
+      const minError = Math.min(...errors);
+      const maxError = Math.max(...errors);
+
+      // console.log("data: ", data);
+
+      vectorLayer = L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          const error = parseFloat(feature.properties.Abbsolute_Eror);
+          const radius = isNaN(error)
+            ? 4
+            : scaleRadius(error, minError, maxError);
+
+          return L.circleMarker(latlng, {
+            radius: radius,
+            fillColor: "red",
+            color: "red",
+            weight: 1,
+            opacity: 0.65,
+            fillOpacity: 0.65,
+          });
+        },
+        onEachFeature: function (feature, layer) {
+          const err = feature.properties.Abbsolute_Eror ?? "N/A";
+          layer.bindPopup(`Uncertainty: ${err}`);
+        },
+      });
+
+      vectorLayer.addTo(map);
+
+      // Render legend
+      renderUncyLegend(map, data);
+    })
+    .catch((error) => {
+      AppBlockUI.unblock();
+      console.error("Error loading GeoJSON:", error);
     });
 };
