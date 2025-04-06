@@ -22,21 +22,50 @@ const initMap = () => {
   renderControlPanel(map);
 
   // Map Lengend
-  renderLegend(map);
+  // renderLegend(map);
 };
 
+// const renderLegend = (map, minVal, maxVal) => {
+//   // Remove existing legend if it already exists
+//   const existingLegend = document.querySelector(".info.legend");
+//   if (existingLegend) {
+//     existingLegend.remove();
+//   }
+
+//   // Create a new legend control
+//   const legend = L.control({ position: "bottomright" });
+
+//   legend.onAdd = function () {
+//     const div = L.DomUtil.create("div", "info legend");
+
+//     div.innerHTML = `
+//       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
+//         <strong>Elevation (m)</strong>
+//         <div style="display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
+//           <span>${maxVal?.toFixed(2) || 0} m</span>
+//           <div style="width: 20px; height: 100px; background: linear-gradient(to bottom, red, yellow, green, cyan, blue);"></div>
+//           <span>${minVal?.toFixed(2) || 0} m</span>
+//         </div>
+//       </div>
+//     `;
+
+//     return div;
+//   };
+
+//   legend.addTo(map);
+// };
+
 const renderLegend = (map, minVal, maxVal) => {
-  // Remove existing legend if it already exists
-  const existingLegend = document.querySelector(".info.legend");
-  if (existingLegend) {
-    existingLegend.remove();
+  // Remove existing elevation legend
+  const existingElevationLegend = document.querySelector(".legend-elevation");
+  if (existingElevationLegend) {
+    existingElevationLegend.remove();
   }
 
-  // Create a new legend control
   const legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function () {
-    const div = L.DomUtil.create("div", "info legend");
+    const div = L.DomUtil.create("div", "info legend legend-elevation"); // <-- Unique class
 
     div.innerHTML = `
       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
@@ -48,7 +77,6 @@ const renderLegend = (map, minVal, maxVal) => {
         </div>
       </div>
     `;
-
     return div;
   };
 
@@ -185,6 +213,56 @@ const scaleRadius = (error, minError, maxError) => {
 };
 
 // To be called when a checkbox for one of the vector layers is ticked
+const renderUncyLegend = (map, geojsonData) => {
+  // Remove any elevation legend before adding uncertainty legend
+  const existingElevationLegend = document.querySelector(".legend-elevation");
+  if (existingElevationLegend) {
+    existingElevationLegend.remove();
+  }
+
+  const legend = L.control({ position: "bottomleft" });
+
+  legend.onAdd = function () {
+    const div = L.DomUtil.create("div", "info legend legend-uncertainty"); // <-- Give unique class
+
+    div.style.background = "white";
+    div.style.padding = "10px";
+    div.style.borderRadius = "6px";
+    div.style.boxShadow = "0 0 5px rgba(0,0,0,0.3)";
+    div.innerHTML = "<strong>Uncertainty (Error)</strong><br>";
+
+    const errors = geojsonData.features
+      .map((f) => parseFloat(f?.properties?.Abbsolute_Eror))
+      .filter((v) => !isNaN(v));
+    const minError = Math.min(...errors);
+    const maxError = Math.max(...errors);
+    const samples = [minError, (minError + maxError) / 2, maxError];
+
+    const scaleRadius = (error) => {
+      const minRadius = 8;
+      const maxRadius = 40;
+      const normalized = (error - minError) / (maxError - minError);
+      return minRadius + normalized * (maxRadius - minRadius);
+    };
+
+    samples.forEach((error) => {
+      const radius = scaleRadius(error);
+      div.innerHTML += `
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
+          <svg width="${radius * 2}" height="${radius * 2}">
+            <circle cx="${radius}" cy="${radius}" r="${radius}" fill="red" fill-opacity="0.75" stroke="red" stroke-width="1" />
+          </svg>
+          <span>${error?.toFixed(2)}</span>
+        </div>
+      `;
+    });
+
+    return div;
+  };
+
+  legend.addTo(map);
+};
+
 const renderVectorLayer = (map, isDSM = true) => {
   const url_to_geojson = isDSM ? DSM_UNCERTAINITY_URL : DTM_UNCERTAINITY_URL;
 
@@ -223,6 +301,9 @@ const renderVectorLayer = (map, isDSM = true) => {
           layer.bindPopup(`Uncertainty: ${err}`);
         },
       }).addTo(map);
+
+      // Render legend
+      renderUncyLegend(map, UNCY_DSM_POINTS);
     })
     .catch((error) => {
       AppBlockUI.unblock();
