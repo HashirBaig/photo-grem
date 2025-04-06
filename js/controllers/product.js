@@ -73,7 +73,7 @@ const renderControlPanel = (map) => {
         "leaflet-bar leaflet-control leaflet-control-custom bg-white"
       );
 
-      panelControlDiv.style.width = "12rem";
+      panelControlDiv.style.width = "18rem";
       panelControlDiv.style.padding = "12px";
       panelControlDiv.style.borderRadius = "6px";
       panelControlDiv.style.backgroundColor = "#fdedec";
@@ -111,6 +111,36 @@ const renderControlPanel = (map) => {
       labelDTM.innerText = "Digital Terrain Model (RMSE 0.51m)";
       labelDTM.className = "form-check-label";
 
+      // Checkbox and Label - Uncertainty DSM
+      const checkboxUncyDSMContainer = document.createElement("div");
+      checkboxUncyDSMContainer.className = "form-check fs-custom";
+
+      const checkboxUncertaintyDSM = document.createElement("input");
+      checkboxUncertaintyDSM.type = "checkbox";
+      checkboxUncertaintyDSM.id = "toggleUncyDSMRaster";
+      checkboxUncertaintyDSM.className = "form-check-input cursor-pointer";
+      checkboxUncertaintyDSM.checked = false;
+
+      const labelUncertaintyDSM = document.createElement("label");
+      labelUncertaintyDSM.htmlFor = "toggleUncyDSMRaster";
+      labelUncertaintyDSM.innerText = "Uncertainty for Generated DSM";
+      labelUncertaintyDSM.className = "form-check-label";
+
+      // Checkbox and Label - Uncertainty DTM
+      const checkboxUncyDTMContainer = document.createElement("div");
+      checkboxUncyDTMContainer.className = "form-check fs-custom";
+
+      const checkboxUncertaintyDTM = document.createElement("input");
+      checkboxUncertaintyDTM.type = "checkbox";
+      checkboxUncertaintyDTM.id = "toggleUncyDTMRaster";
+      checkboxUncertaintyDTM.className = "form-check-input cursor-pointer";
+      checkboxUncertaintyDTM.checked = false;
+
+      const labelUncertaintyDTM = document.createElement("label");
+      labelUncertaintyDTM.htmlFor = "toggleUncyDTMRaster";
+      labelUncertaintyDTM.innerText = "Uncertainty for Generated DTM";
+      labelUncertaintyDTM.className = "form-check-label";
+
       // Append elements
       checkboxContainer.appendChild(checkboxDSM);
       checkboxContainer.appendChild(labelDSM);
@@ -118,10 +148,18 @@ const renderControlPanel = (map) => {
       checkboxDTMContainer.appendChild(checkboxDTM);
       checkboxDTMContainer.appendChild(labelDTM);
 
+      checkboxUncyDSMContainer.appendChild(checkboxUncertaintyDSM);
+      checkboxUncyDSMContainer.appendChild(labelUncertaintyDSM);
+      
+      checkboxUncyDTMContainer.appendChild(checkboxUncertaintyDTM);
+      checkboxUncyDTMContainer.appendChild(labelUncertaintyDTM);
+
       // Append to CP
       panelControlDiv.appendChild(headerDiv);
       panelControlDiv.appendChild(checkboxContainer);
       panelControlDiv.appendChild(checkboxDTMContainer);
+      panelControlDiv.appendChild(checkboxUncyDSMContainer);
+      panelControlDiv.appendChild(checkboxUncyDTMContainer);
 
       // On change methods
       checkboxDSM.onchange = function () {
@@ -131,12 +169,16 @@ const renderControlPanel = (map) => {
 
         if (this.checked) {
           checkboxDTM.checked = false;
+          checkboxUncertaintyDSM.checked = false;
+          checkboxUncertaintyDTM.checked = false;
 
           renderGeoRaster(map);
         } else {
-          checkboxDTM.checked = true;
-
-          renderGeoRaster(map, false);
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map);
         }
       };
 
@@ -147,20 +189,66 @@ const renderControlPanel = (map) => {
 
         if (this.checked) {
           checkboxDSM.checked = false;
+          checkboxUncertaintyDSM.checked = false;
+          checkboxUncertaintyDTM.checked = false;
+
           renderGeoRaster(map, false);
         } else {
-          checkboxDSM.checked = true;
-          renderGeoRaster(map);
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map);
+        }
+      };
+
+      checkboxUncertaintyDSM.onchange = function () {
+        if (map.hasLayer(geoRasterLayer)) {
+          map.removeLayer(geoRasterLayer);
+        }
+
+        if (this.checked) {
+          checkboxDSM.checked = false;
+          checkboxDTM.checked = false;
+          checkboxUncertaintyDTM.checked = false;
+          
+          renderVectorLayer(map, true);
+        } else {
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            }).addTo(map);
+          }
+        }
+
+      checkboxUncertaintyDTM.onchange = function () {
+        if (map.hasLayer(geoRasterLayer)) {
+          map.removeLayer(geoRasterLayer);
+        }
+
+        if (this.checked) {
+          checkboxDSM.checked = false;
+          checkboxDTM.checked = false;
+          checkboxUncertaintyDSM.checked = false;
+          
+          renderVectorLayer(map, false);
+        } else {
+          L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }).addTo(map);
         }
       };
 
       // Return the panel div
       return panelControlDiv;
     },
-  });
+});
 
-  // Add Control Panel to Map
-  map.addControl(new panelControl());
+// Add Control Panel to Map
+map.addControl(new panelControl());
 };
 
 const renderGeoRaster = (map, isDSM = true) => {
@@ -196,7 +284,7 @@ const renderGeoRaster = (map, isDSM = true) => {
           resolution: 512,
         }).addTo(map);
 
-        map.fitBounds(geoRasterLayer.getBounds());
+        // map.fitBounds(geoRasterLayer.getBounds());
 
         // Update the legend with min/max values
         renderLegend(map, minVal, maxVal);
@@ -209,3 +297,43 @@ const renderGeoRaster = (map, isDSM = true) => {
       renderGeoRaster(map, isDSM);
     });
 };
+
+// To be called when a checkbox for one of the vector layers is ticked
+const renderVectorLayer = (map, isDSM=true) => {
+
+  const url_to_geojson = isDSM
+    ? " https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/DSM_Uncertainty.geojson?alt=media&token=9e340cbd-5a31-4a35-9b1c-96084e075916"
+    : " https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/DTM_Uncertainty.geojson?alt=media&token=48ab16f6-0bfb-4ff4-9277-59a353dd9a38"
+
+  AppBlockUI.block();
+
+  fetch(url_to_geojson)
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          const Uncertainty = feature.properties.Abbsolute_Eror; // change 'value' to your attribute name
+          
+          let scaling_factor = 5;
+
+          // Scale the radius (adjust scaling as needed)
+          const radius = Math.pow(Uncertainty, 2) * scaling_factor; // or use d3.scale if you want more control
+  
+          return L.circleMarker(latlng, {
+            radius: radius,
+            fillColor: "#0078ff",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.7
+          });
+        },
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup('Uncertainty: ${feature.properties.Abbsolute_Eror}')
+        }
+      }).addTo(map);
+    })
+    .catch(error => {
+      console.error("Error loading GeoJSON:", error)
+    })
+}
