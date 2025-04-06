@@ -167,8 +167,6 @@ const renderGeoRaster = (map, isDSM = true) => {
           resolution: 512,
         }).addTo(map);
 
-        // map.fitBounds(geoRasterLayer.getBounds());
-
         // Update the legend with min/max values
         renderLegend(map, minVal, maxVal);
       });
@@ -224,8 +222,6 @@ const renderUncyLegend = (map, geojsonData) => {
       )
       .filter((v) => !isNaN(v));
 
-    console.log("err-val: ", errors);
-
     const minError = Math.min(...errors);
     const maxError = Math.max(...errors);
     const samples = [minError, (minError + maxError) / 2, maxError];
@@ -264,8 +260,6 @@ const renderVectorLayer = (map, isDSM = true) => {
         .filter((v) => !isNaN(v));
       const minError = Math.min(...errors);
       const maxError = Math.max(...errors);
-
-      // console.log("data: ", data);
 
       vectorLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
