@@ -21,6 +21,42 @@ const initMap = () => {
   renderControlPanel(map);
 };
 
+// const renderLegend = (map, minVal, maxVal) => {
+//   // Remove existing elevation legend
+//   const existingElevationLegend = document.querySelector(".legend-elevation");
+//   if (existingElevationLegend) {
+//     existingElevationLegend.remove();
+//   }
+
+//   // Also remove any previously rendered uncertainty legend
+//   const existingUncertaintyLegend = document.querySelector(
+//     ".legend-uncertainty"
+//   );
+//   if (existingUncertaintyLegend) {
+//     existingUncertaintyLegend.remove();
+//   }
+
+//   const legend = L.control({ position: "bottomright" });
+
+//   legend.onAdd = function () {
+//     const div = L.DomUtil.create("div", "info legend legend-elevation"); // <-- Unique class
+
+//     div.innerHTML = `
+//       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
+//         <strong>Elevation (m)</strong>
+//         <div style="display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
+//           <span>${maxVal?.toFixed(2) || 0} m</span>
+//           <div style="width: 20px; height: 100px; background: linear-gradient(to bottom, red, yellow, green, cyan, blue);"></div>
+//           <span>${minVal?.toFixed(2) || 0} m</span>
+//         </div>
+//       </div>
+//     `;
+//     return div;
+//   };
+
+//   legend.addTo(map);
+// };
+
 const renderLegend = (map, minVal, maxVal) => {
   // Remove existing elevation legend
   const existingElevationLegend = document.querySelector(".legend-elevation");
@@ -39,18 +75,42 @@ const renderLegend = (map, minVal, maxVal) => {
   const legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function () {
-    const div = L.DomUtil.create("div", "info legend legend-elevation"); // <-- Unique class
+    const div = L.DomUtil.create("div", "info legend legend-elevation");
+
+    const tickCount = 5;
+    const interval = (maxVal - minVal) / (tickCount - 1);
+    const tickValues = Array.from({ length: tickCount }, (_, i) =>
+      (minVal + i * interval).toFixed(1)
+    ).reverse();
 
     div.innerHTML = `
       <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.3);">
         <strong>Elevation (m)</strong>
-        <div style="display: flex; flex-direction: column; align-items: center; padding-top: 5px;">
-          <span>${maxVal?.toFixed(2) || 0} m</span>
-          <div style="width: 20px; height: 100px; background: linear-gradient(to bottom, red, yellow, green, cyan, blue);"></div>
-          <span>${minVal?.toFixed(2) || 0} m</span>
+        <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 10px; margin-top: 1rem;">
+          <div style="width: 20px; height: 100px; background: linear-gradient(to bottom, red, yellow, green, cyan, blue); position: relative;">
+            ${tickValues
+              .map((_, i) => {
+                const position = (i / (tickCount - 1)) * 100;
+                return `
+                <div style="
+                  position: absolute;
+                  left: 100%;
+                  top: ${position}%;
+                  transform: translateY(-50%);
+                  font-size: 10px;
+                  white-space: nowrap;
+                  margin-left: 4px;
+                ">
+                  ${tickValues[i]} m
+                </div>
+              `;
+              })
+              .join("")}
+          </div>
         </div>
       </div>
     `;
+
     return div;
   };
 
