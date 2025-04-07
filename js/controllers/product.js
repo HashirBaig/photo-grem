@@ -228,10 +228,21 @@ const renderUncyLegend = (map, geojsonData) => {
 
     samples.forEach((error) => {
       const radius = scaleRadius(error, minError, maxError);
+      const padding = 4; // Extra space around the circle
+      const size = radius * 2 + padding * 2;
+
       div.innerHTML += `
         <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
-          <svg width="${radius * 2}" height="${radius * 2}">
-            <circle cx="${radius}" cy="${radius}" r="${radius}" fill="red" fill-opacity="0.75" stroke="red" stroke-width="1" />
+          <svg width="${size}" height="${size}">
+            <circle 
+              cx="${size / 2}" 
+              cy="${size / 2}" 
+              r="${radius}" 
+              fill="red" 
+              fill-opacity="0.75" 
+              stroke="red" 
+              stroke-width="1" 
+            />
           </svg>
           <span>${error?.toFixed(2)}</span>
         </div>
