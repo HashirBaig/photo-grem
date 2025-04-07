@@ -2,7 +2,7 @@ const DSM_URL =
   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dsm.tif?alt=media&token=4a057b9f-dc7f-4709-b490-fab0f4e873f5";
 
 const AHN_DSM_URL =
-  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_ahn_dsm.tif?alt=media&token=8d3b7949-0bca-4961-8adc-e92de0d04ad9";
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_ahn_dsm.tif?alt=media&token=5a624e63-c032-4f9c-8f43-f2d519c56a37";
 
 const DTM_URL =
   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dtm.tif?alt=media&token=5f5d6bbd-159b-43a7-97a7-656d6f96dcc9";
