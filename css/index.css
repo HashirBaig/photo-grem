@@ -38,9 +38,12 @@
 .w-fit {
   width: fit-content;
 }
+.h-fit {
+  height: fit-content !important;
+}
 
 .w-500px {
- width: 500px !important;
+  width: 500px !important;
 }
 
 .max-w-450px {
@@ -77,6 +80,11 @@
 .z-10000 {
   z-index: 10000;
 }
+
+.home-banner {
+  width: calc(100% - 12rem);
+  height: auto;
+}
 /* END:: UTILITIES ::END*/
 
 /* START:: TEAM MEMBER PICTURE ::START */
@@ -105,7 +113,6 @@
   width: 5rem;
   height: 5rem;
 }
-
 
 .picture-container > .member-pic {
   width: 6rem;
@@ -146,7 +153,7 @@ ul li::before {
 }
 
 .card.team {
-  width: 430px;
+  width: 350px;
   min-height: 190px;
   max-height: fit-content;
 }

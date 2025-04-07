@@ -29,6 +29,7 @@
     <script src="./plugins/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="https://gisedu.itc.utwente.nl/exercise/libraries/openlayers/v4.6.4/ol.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
 
     <title>Photogrem</title>
   </head>
@@ -94,16 +95,24 @@
 
       <!-- Body -->
       <div class="container-fluid my-5 px-5">
-        <!-- Section:: About Us -->
-
+        <!-- Section:: Banner -->
         <section class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8 d-flex justify-content-center">
-            <div class="card position-relative min-h-180px">
-              <h4 class="text-color-primary text-center my-4 fw-bolder">
+          <div class="col-md-6">
+            <img
+              src="./assets/images/geo_illus_3.jpg"
+              alt="banner"
+              class="home-banner reveal"
+            />
+          </div>
+
+          <div
+            class="col-md-6 d-flex justify-content-center align-items-center"
+          >
+            <div class="card position-relative h-fit">
+              <h3 class="text-color-primary text-center my-4 fw-bolder reveal">
                 About Our Web App
-              </h4>
-              <p>
+              </h3>
+              <p class="zoom-in">
                 Welcome to our interactive photogrammetry web application,
                 designed for analyzing and visualizing photogrammetric products.
                 Our platform utilizes CloudCompare and ERDAS to create a Digital
@@ -120,20 +129,16 @@
               <!-- end:: card graphics ::end -->
             </div>
           </div>
-          <div class="col-md-2"></div>
         </section>
 
         <!-- Section:: What We Offer -->
         <section class="row mt-5">
-          <div class="col-md-12">
-            <h4 class="text-color-primary text-center my-4 fw-bolder">
-              What We Offer
-            </h4>
+          <div class="col-md-7 slide-left">
             <div class="row">
               <div
-                class="col-md-12 d-flex justify-content-center gap-4 flex-wrap"
+                class="col-md-12 d-flex justify-content-center align-items-center gap-4 flex-wrap"
               >
-                <div class="card team">
+                <div class="card team fade-top">
                   <h5 class="text-color-primary text-center fw-semibold">
                     Interactive DSM Visualization
                   </h5>
@@ -145,9 +150,9 @@
                   </p>
                 </div>
 
-                <div class="card team">
+                <div class="card team fade-top">
                   <h5 class="text-color-primary text-center fw-semibold">
-                    Interactive DTM Visualization
+                    DTM Visualization
                   </h5>
                   <p>
                     Generated from the DSM using CloudCompare, this DTM provides
@@ -157,7 +162,7 @@
                   </p>
                 </div>
 
-                <div class="card team">
+                <div class="card team fade-top">
                   <h5 class="text-color-primary text-center fw-semibold">
                     Web-Based Accessibility
                   </h5>
@@ -170,23 +175,54 @@
               </div>
             </div>
           </div>
+
+          <div
+            class="col-md-5 d-flex flex-column align-items-center justify-content-center slide-right"
+          >
+            <h3 class="text-color-primary text-center my-4 fw-bolder zoom-in">
+              What We Offer
+            </h3>
+
+            <img
+              src="./assets/images/geo_illus_4.jpg"
+              alt="banner"
+              class="home-banner"
+            />
+          </div>
         </section>
 
         <!-- Section:: Who Can Benefit -->
         <section class="row mt-5">
-          <div class="col-md-2"></div>
-          <div class="col-md-8 d-flex justify-content-center">
-            <div class="card position-relative w-100">
-              <h4 class="text-color-primary text-center my-4 fw-bolder">
+          <div class="col-md-6 slide-left">
+            <img
+              src="./assets/images/geo_illus_5.jpg"
+              alt="banner"
+              class="home-banner"
+            />
+          </div>
+
+          <div
+            class="col-md-6 d-flex justify-content-center align-items-center slide-right"
+          >
+            <div class="card position-relative w-100 h-fit">
+              <h3
+                class="text-color-primary text-center my-4 fw-bolder fade-top"
+              >
                 Who Can Benefit
-              </h4>
+              </h3>
               <div>
                 <p>Our web app is ideal for the following purposes</p>
                 <ul>
-                  <li>Urban planners and city administrators.</li>
-                  <li>GIS professionals and remote sensing specialists.</li>
-                  <li>Real estate developers and surveyors.</li>
-                  <li>Disaster response teams assessing structural damages.</li>
+                  <li class="zoom-in">
+                    Urban planners and city administrators.
+                  </li>
+                  <li class="zoom-in">
+                    GIS professionals and remote sensing specialists.
+                  </li>
+                  <li class="zoom-in">Real estate developers and surveyors.</li>
+                  <li class="zoom-in">
+                    Disaster response teams assessing structural damages.
+                  </li>
                 </ul>
               </div>
               <!-- start:: card graphics ::start -->
@@ -198,15 +234,14 @@
               <!-- end:: card graphics ::end -->
             </div>
           </div>
-          <div class="col-md-2"></div>
         </section>
       </div>
 
       <!-- Footer -->
       <footer class="position-relative bg-color-primary w-100 mt-5 rounded-top">
-        <h4 class="text-white text-center my-4 fw-bolder pt-4">
+        <h3 class="text-white text-center my-4 fw-bolder pt-4 zoom-in">
           Why Choose Us
-        </h4>
+        </h3>
         <div class="text-white px-3 pb-3">
           <p class="fw-semibold">
             By integrating the latest advancements in photogrammetry with
@@ -227,9 +262,10 @@
             Mail: photogrem@gmail.com <br />
           </p>
 
-          <section id="copyright">
-            <div class="wrapper">&copy; Copyright @2025 by Photogrem</div>
-          </section>
+          <div id="copyright" class="wrapper text-center">
+            &copy; Copyright @2025 by Photogrem
+          </div>
+
           <!-- copyright -->
         </div>
       </footer>

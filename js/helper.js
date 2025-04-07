@@ -67,3 +67,67 @@ const getProductURL = (isDSM, isAHN) => {
     ? AHN_DTM_URL
     : DTM_URL;
 };
+
+ScrollReveal().reveal(".reveal", {
+  delay: 200,
+  duration: 1000,
+  origin: "bottom",
+  distance: "50px",
+  easing: "ease-in-out",
+  reset: false,
+});
+
+ScrollReveal().reveal(".fade-top", {
+  origin: "top",
+  distance: "40px",
+  duration: 800,
+  easing: "ease-in-out",
+  delay: 100,
+  reset: false,
+});
+
+ScrollReveal().reveal(".slide-left", {
+  origin: "left",
+  distance: "60px",
+  duration: 1200,
+  delay: 200,
+  easing: "ease-out",
+  reset: false,
+});
+
+ScrollReveal().reveal(".slide-right", {
+  origin: "right",
+  distance: "60px",
+  duration: 1000,
+  delay: 200,
+  easing: "ease-in-out",
+  reset: false,
+});
+
+ScrollReveal().reveal(".zoom-in", {
+  scale: 0.85,
+  duration: 1000,
+  delay: 150,
+  easing: "ease-in-out",
+  reset: false,
+});
+
+ScrollReveal().reveal(".rotate-in", {
+  rotate: {
+    x: 0,
+    y: 20,
+    z: 10,
+  },
+  scale: 0.9,
+  duration: 1200,
+  easing: "ease-in-out",
+  delay: 300,
+});
+
+ScrollReveal().reveal(".cascade .item", {
+  origin: "bottom",
+  distance: "20px",
+  duration: 500,
+  easing: "ease-in-out",
+  interval: 100, // reveal one after another
+});
