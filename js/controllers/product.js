@@ -248,7 +248,7 @@ const renderUncyLegend = (map, geojsonData) => {
               stroke-width="1" 
             />
           </svg>
-          <span>${error?.toFixed(2)}</span>
+          <span>${error?.toFixed(2)} m</span>
         </div>
       `;
     });
@@ -271,14 +271,21 @@ const renderVectorLayer = (map, isDSM = true) => {
 
       // Determine min and max error for scaling
       const errors = data?.features
-        .map((f) => parseFloat(f.properties.Abbsolute_Eror))
+        .map((f) =>
+          parseFloat(
+            f?.properties?.Abbsolute_Eror || f?.properties?.DTM_Uncertainty
+          )
+        )
         .filter((v) => !isNaN(v));
       const minError = Math.min(...errors);
       const maxError = Math.max(...errors);
 
       vectorLayer = L.geoJSON(data, {
         pointToLayer: function (feature, latlng) {
-          const error = parseFloat(feature.properties.Abbsolute_Eror);
+          const error = parseFloat(
+            feature?.properties?.Abbsolute_Eror ||
+              feature?.properties?.DTM_Uncertainty
+          );
           const radius = isNaN(error)
             ? 4
             : scaleRadius(error, minError, maxError);
@@ -293,8 +300,12 @@ const renderVectorLayer = (map, isDSM = true) => {
           });
         },
         onEachFeature: function (feature, layer) {
-          const err = feature.properties.Abbsolute_Eror ?? "N/A";
-          layer.bindPopup(`Uncertainty: ${err}`);
+          const err =
+            (
+              feature?.properties?.Abbsolute_Eror ||
+              feature?.properties?.DTM_Uncertainty
+            )?.toFixed(2) ?? "N/A";
+          layer.bindPopup(`Uncertainty: ${err} meter`);
         },
       });
 
