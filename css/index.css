@@ -39,6 +39,13 @@
   width: fit-content;
 }
 
+.w-500px {
+ width: 500px !important;
+}
+
+.max-w-450px {
+  max-width: 450px !important;
+}
 .max-w-320px {
   max-width: 320px !important;
 }
@@ -89,6 +96,16 @@
   width: 5rem;
   height: 5rem;
 }
+.picture-container.naresh {
+  width: 5rem;
+  height: 5rem;
+}
+
+.picture-container.shiv {
+  width: 5rem;
+  height: 5rem;
+}
+
 
 .picture-container > .member-pic {
   width: 6rem;
@@ -155,7 +172,7 @@ ul li::before {
 
 .container-team-card {
   width: fit-content;
-  max-width: 850px;
+  max-width: 1280px;
   height: 300px;
   position: relative;
 }
