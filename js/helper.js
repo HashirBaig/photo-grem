@@ -8,7 +8,7 @@ const DTM_URL =
   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dtm.tif?alt=media&token=5f5d6bbd-159b-43a7-97a7-656d6f96dcc9";
 
 const AHN_DTM_URL =
-  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_ahn_dtm.tif?alt=media&token=84f97880-fbca-439f-90cc-e21066b7354a";
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_ahn_dtm.tif?alt=media&token=cb4888ab-6a43-4f36-b84a-abdbd295015e";
 
 const DSM_UNCERTAINITY_URL =
   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/dsm_uncy_4326.geojson?alt=media&token=35b4ebd0-320a-4120-a1b9-3e2382c552a6";
