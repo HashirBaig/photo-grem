@@ -118,8 +118,12 @@ const renderControlPanel = (map) => {
 
         if (e?.target?.value === "dsm") {
           renderGeoRaster(map);
+        } else if (e?.target?.value === "dsm_ahn") {
+          renderGeoRaster(map, true, true);
         } else if (e?.target?.value === "dtm") {
           renderGeoRaster(map, false);
+        } else if (e?.target?.value === "dtm_ahn") {
+          renderGeoRaster(map, false, true);
         } else if (e?.target?.value === "dsm_uncy") {
           renderVectorLayer(map);
         } else {
@@ -136,8 +140,8 @@ const renderControlPanel = (map) => {
   map.addControl(new panelControl());
 };
 
-const renderGeoRaster = (map, isDSM = true) => {
-  const url_to_geotiff_file = isDSM ? DSM_URL : DTM_URL;
+const renderGeoRaster = (map, isDSM = true, isAHN = false) => {
+  const url_to_geotiff_file = getProductURL(isDSM, isAHN);
 
   AppBlockUI.block();
 

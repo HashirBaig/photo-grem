@@ -1,8 +1,14 @@
 const DSM_URL =
-  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/opt_dsm_cog.tif?alt=media&token=967c4487-51b7-4437-a5af-d08ca4e08a20";
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dsm.tif?alt=media&token=4a057b9f-dc7f-4709-b490-fab0f4e873f5";
+
+const AHN_DSM_URL =
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_ahn_dsm.tif?alt=media&token=8d3b7949-0bca-4961-8adc-e92de0d04ad9";
 
 const DTM_URL =
-  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/opt_dtm_cog.tif?alt=media&token=850dafbb-036e-4d7f-b4b8-5ee4efc63173";
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_dtm.tif?alt=media&token=5f5d6bbd-159b-43a7-97a7-656d6f96dcc9";
+
+const AHN_DTM_URL =
+  "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/cog_ahn_dtm.tif?alt=media&token=84f97880-fbca-439f-90cc-e21066b7354a";
 
 const DSM_UNCERTAINITY_URL =
   "https://firebasestorage.googleapis.com/v0/b/mpn-dev-67647.appspot.com/o/dsm_uncy_4326.geojson?alt=media&token=35b4ebd0-320a-4120-a1b9-3e2382c552a6";
@@ -45,7 +51,19 @@ const AppBlockUI = {
 // Products list
 const productOptionList = [
   { value: "dsm", label: "Digital Surface Model (RMSE - 0.55m)" },
+  { value: "dsm_ahn", label: "Digital Surface Model - AHN (Ground Truth)" },
   { value: "dtm", label: "Digital Terrain Model (RMSE - 0.51m)" },
+  { value: "dtm_ahn", label: "Digital Terrain Model - AHN (Ground Truth)" },
   { value: "dsm_uncy", label: "Uncertainity of DSM" },
   { value: "dtm_uncy", label: "Uncertainity of DTM" },
 ];
+
+const getProductURL = (isDSM, isAHN) => {
+  return isDSM && !isAHN
+    ? DSM_URL
+    : isDSM && isAHN
+    ? AHN_DSM_URL
+    : !isDSM && isAHN
+    ? AHN_DTM_URL
+    : DTM_URL;
+};
