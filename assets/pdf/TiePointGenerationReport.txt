@@ -1,0 +1,13 @@
+                         The Autotie Summary Report
+
+       Image       Number of        Number of     Number of      Point         Pattern       Image  
+         ID     Intended Points   Points Found     Patterns   Success Rate   Success Rate    Name 
+
+           1          25              22              25         88.00%         48.00%       23_401_0002_00083013_NOB20
+           2          25              28              25        100.00%         72.00%       23_401_0002_00083018_NOB20
+           3          25              18              25         72.00%         44.00%       23_401_0002_00083023_NOB20
+
+Average Point Success Rate:	86.67%
+Average Pattern Success Rate:	54.67%
+Total unique tie points found:  28
+            
